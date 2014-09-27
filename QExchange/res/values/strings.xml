@@ -16,6 +16,5 @@
     <string name="createAccountPrompt">Create Account</string>
     <string name="passHint">Password</string>
     <string name="userHint">Username</string>
-    <string name="app_label">QExchange</string>
 
 </resources>
