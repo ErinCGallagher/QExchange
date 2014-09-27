@@ -18,8 +18,10 @@ public class AddBookPage extends Activity {
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
-		database.execute();
-		database.insert();
+		String st = "INSERT INTO Accounts (ID, email, password, name) values ('5','foger','test','mac')";
+		database.execute(st);
+		
+		//database.insert(st);
 
 	}
 
