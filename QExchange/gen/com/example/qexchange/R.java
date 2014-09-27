@@ -24,33 +24,38 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
-        public static final int LinearLayout1=0x7f080017;
-        public static final int LinearLayout2=0x7f080012;
-        public static final int RelativeLayout1=0x7f080013;
-        public static final int action_settings=0x7f08001a;
-        public static final int button1=0x7f08000b;
-        public static final int button2=0x7f08000c;
-        public static final int confirmPassField=0x7f080008;
-        public static final int createAccountButton=0x7f080015;
-        public static final int editText5=0x7f080007;
-        public static final int emailField=0x7f08000a;
-        public static final int imageView1=0x7f08000d;
-        public static final int linearLayout1=0x7f080011;
-        public static final int linearLayout2=0x7f080016;
-        public static final int listingContainer=0x7f080003;
-        public static final int nameField=0x7f080004;
-        public static final int newPassField=0x7f080005;
-        public static final int passField=0x7f080018;
-        public static final int sumbitButton=0x7f080014;
-        public static final int textView1=0x7f080000;
+        public static final int LinearLayout1=0x7f08001a;
+        public static final int LinearLayout2=0x7f080015;
+        public static final int RelativeLayout1=0x7f080016;
+        public static final int account=0x7f08000e;
+        public static final int action_settings=0x7f08001f;
+        public static final int addBook=0x7f080005;
+        public static final int button2=0x7f080014;
+        public static final int confirmPassField=0x7f08000b;
+        public static final int createAccountButton=0x7f080018;
+        public static final int deleteBook=0x7f08001e;
+        public static final int editText5=0x7f08000a;
+        public static final int emailField=0x7f08000d;
+        public static final int imageView1=0x7f08000f;
+        public static final int linearLayout1=0x7f080013;
+        public static final int linearLayout2=0x7f080019;
+        public static final int listView1=0x7f080006;
+        public static final int listingContainer=0x7f080004;
+        public static final int myBooks=0x7f080000;
+        public static final int nameField=0x7f080007;
+        public static final int newPassField=0x7f080008;
+        public static final int passField=0x7f08001b;
+        public static final int searchView1=0x7f08001d;
+        public static final int sumbitButton=0x7f080017;
+        public static final int textView1=0x7f080003;
         public static final int textView2=0x7f080001;
         public static final int textView3=0x7f080002;
-        public static final int textView4=0x7f080009;
-        public static final int textView5=0x7f080006;
-        public static final int textView6=0x7f08000e;
-        public static final int textView7=0x7f08000f;
-        public static final int textView8=0x7f080010;
-        public static final int userField=0x7f080019;
+        public static final int textView4=0x7f08000c;
+        public static final int textView5=0x7f080009;
+        public static final int textView6=0x7f080010;
+        public static final int textView7=0x7f080011;
+        public static final int textView8=0x7f080012;
+        public static final int userField=0x7f08001c;
     }
     public static final class layout {
         public static final int activity_account_page=0x7f030000;
@@ -60,6 +65,7 @@ public final class R {
         public static final int activity_login_page=0x7f030004;
         public static final int activity_main_page=0x7f030005;
         public static final int activity_search_result_page=0x7f030006;
+        public static final int activity_seller_book_info_page=0x7f030007;
     }
     public static final class menu {
         public static final int account_page=0x7f070000;

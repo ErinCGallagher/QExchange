@@ -18,7 +18,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -87,8 +87,8 @@
         android:id="@+id/emailField"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/button1"
-        android:layout_alignRight="@+id/button1"
+        android:layout_alignLeft="@+id/account"
+        android:layout_alignRight="@+id/account"
         android:layout_below="@+id/textView4"
         android:ems="10"
         android:inputType="textEmailAddress" >
@@ -111,7 +111,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textView4"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/button1"
+        android:layout_alignRight="@+id/account"
         android:layout_marginBottom="18dp"
         android:onClick="launchLoginPage"
         android:text="Cancel" />

@@ -6,7 +6,10 @@ import java.util.concurrent.ExecutionException;
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
 
 public class AddBookPage extends Activity {
 	Connect database = new Connect();
@@ -58,6 +61,17 @@ public class AddBookPage extends Activity {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.book_page, menu);
 		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		startActivity(new Intent(AddBookPage.this, AccountPage.class));
+		finish();
+		return true;
+	}
+	
+	public void submitBook(View view){
+		//check input, add to table, return to account
 	}
 
 

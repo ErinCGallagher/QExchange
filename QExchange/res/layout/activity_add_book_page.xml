@@ -108,22 +108,14 @@
         android:inputType="numberDecimal" />
 
     <Button
-        android:id="@+id/button1"
+        android:id="@+id/account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/emailField"
+        android:layout_alignRight="@+id/emailField"
         android:layout_below="@+id/emailField"
         android:layout_marginTop="19dp"
-        android:layout_toLeftOf="@+id/button2"
+        android:onClick="submitBook"
         android:text="Submit" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/button1"
-        android:layout_alignBottom="@+id/button1"
-        android:layout_alignRight="@+id/emailField"
-        android:text="Back" />
 
 </RelativeLayout>
