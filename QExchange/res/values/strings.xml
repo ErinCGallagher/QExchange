@@ -10,5 +10,11 @@
     <string name="title_activity_account_page">AccountPage</string>
     <string name="title_activity_book_info_page">BookInfoPage</string>
     <string name="title_activity_search_result_page">SearchResultPage</string>
+    <string name="userPrompt">Username:</string>
+    <string name="submitPrompt">Submit</string>
+    <string name="passPrompt">Password:</string>
+    <string name="createAccountPrompt">Create Account</string>
+    <string name="passHint">Password</string>
+    <string name="userHint">Username</string>
 
 </resources>

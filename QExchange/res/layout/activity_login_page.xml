@@ -8,9 +8,73 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".LoginPage" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        <LinearLayout
+            android:id="@+id/LinearLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:layout_alignLeft="@+id/RelativeLayout1"
+            android:layout_alignParentBottom="true"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingBottom="60dp" >
+
+            <Button
+                android:id="@+id/sumbitButton"
+                android:layout_width="150dip"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:gravity="center_vertical|center_horizontal"
+                android:text="@+string/submitPrompt" />
+
+            <Button
+                android:id="@+id/createAccountButton"
+                android:layout_width="150dip"
+                android:layout_height="wrap_content"
+                android:text="@+string/createAccountPrompt" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/LinearLayout1"
+            android:layout_below="@+id/LinearLayout1"
+            android:layout_margin="5dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="30dp" >
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/passField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/LinearLayout2"
+            android:layout_alignLeft="@+id/linearLayout2"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@+string/passHint" >
+
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/userField"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/passField"
+            android:layout_alignRight="@+id/linearLayout2"
+            android:layout_marginBottom="30dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="@string/userHint" />
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout2"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_launcher" />
 
 </RelativeLayout>
