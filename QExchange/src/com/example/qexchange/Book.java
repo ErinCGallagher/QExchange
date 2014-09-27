@@ -5,7 +5,6 @@ public class Book {
 	private int edition;
 	private double price;
 	private String tag;
-	private int id;
 	
 		
 		public Book(){
