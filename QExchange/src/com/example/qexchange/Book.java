@@ -2,20 +2,21 @@ package com.example.qexchange;
 
 public class Book {
 	private String name;
-	private String edition;
-	private String price;
+	private int edition;
+	private double price;
 	private String tag;
+	private int id;
 	
 		
 		public Book(){
 			name = " ";
-			edition = " ";
-			price = " ";
+			edition = 1;
+			price = 0;
 			tag = " ";
 			
 		}
 		
-		public Book(String name, String edition, String price, String tag){
+		public Book(String name, int edition, double price, String tag){
 			this.name = name;
 			this.edition = edition;
 			this.price = price;
@@ -25,11 +26,11 @@ public class Book {
 		public String getName(){
 			return name;
 		}
-		public String getEdition(){
+		public int getEdition(){
 			return edition;
 		}
 		
-		public String getPrice(){
+		public double getPrice(){
 			return price;
 		}
 		
@@ -41,11 +42,11 @@ public class Book {
 			this.name = name;
 		}
 		
-		public void setEdition(String edition){
+		public void setEdition(int edition){
 			this.edition = edition;
 		}
 		
-		public void setPrice(String price){
+		public void setPrice(double price){
 			this.price = price;
 		}
 		

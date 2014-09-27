@@ -2,23 +2,18 @@ package com.example.qexchange;
 
 public class Account {
 	
-	private String username;
+	private String email;
 	private String password;
 	private String name;
-	private String email;
 	
 	public Account(String username, String password) {
 		this(username, password, "Jon Snow");
 	}
 	
 	public Account(String username, String password, String name) {
-		this.username = username;
+		this.email = email;
 		this.password = password;
 		this.name = name;
-	}
-	
-	public String getUsername() {
-		return username;
 	}
 	
 	public String getPassword() {
