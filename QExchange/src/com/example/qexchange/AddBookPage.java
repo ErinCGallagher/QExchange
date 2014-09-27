@@ -1,28 +1,56 @@
 package com.example.qexchange;
 
-import com.mysql.jdbc.Statement;
+import java.sql.SQLException;
+import java.util.concurrent.ExecutionException;
 
 import android.os.Build;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.Menu;
 
 public class AddBookPage extends Activity {
-	DatabaseQuery database = new DatabaseQuery();
+	Connect database = new Connect();
+
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState){
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_book_page);
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
-		String st = "INSERT INTO Accounts (ID, email, password, name) values ('5','foger','test','mac')";
-		database.execute(st);
-		
-		//database.insert(st);
 
+		try {
+			query();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+
+	}
+
+	public void query() throws SQLException, InterruptedException, ExecutionException {
+		java.sql.ResultSet result =null;
+		String st = "SELECT * FROM Accounts";
+		result = database.execute("SELECT",st).get();
+		System.out.println("after but in try");
+		System.out.println("after");
+		//int id   = result.findColumn("ID");
+		//int email    = result.findColumn("email");
+		//int password  = result.findColumn("password");
+		int name;
+		name = result.findColumn("name");
+		while(result.next()) {
+			System.out.println(result.getString(name));
+
+		}
 	}
 
 	@Override
