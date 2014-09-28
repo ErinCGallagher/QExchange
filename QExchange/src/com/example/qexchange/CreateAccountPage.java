@@ -47,22 +47,29 @@ public class CreateAccountPage extends Activity {
 
 		nameField = (EditText)findViewById(R.id.nameField);
 		nameInput = isTextValid(nameField);
+		if (nameInput.length() > 50) {
+			nameInput = "retry";
+			nameField.setError("Name can be no longer than 50 characters");
+		}
 		passwordField = (EditText)findViewById(R.id.newPassField);
 		passwordInput = isTextValid(passwordField);
 		confirmField = (EditText)findViewById(R.id.confirmPassField);
-		if (passwordInput.length() > 5){
-			System.out.println("greater than 5");
+		if (passwordInput.length() < 5){
+			passwordField.setError("Passwords must be at least 5 characters");
+		}
+		else if (passwordInput.length() > 20) {
+			passwordInput = "retry";
+			passwordField.setError("Passwords can be no longer than 20 characters");
+		} else {
 			confirmPass = isTextValid(confirmField);
 		}
-		else{
-			confirmField.setError("must be > 5 letters");
-			passwordField.setError("must be > 5 letters");
-			
-		}
-		correctPass = doPasswordsMatch(passwordInput, confirmPass);
 		emailField = (EditText)findViewById(R.id.emailField);
 		emailInput = isTextValid(emailField);
-		System.out.println("emailInput"+ emailInput);
+		if (emailInput.length() > 50) {
+			emailInput = "retry";
+			emailField.setError("Emails can be no longer than 50 characters");
+		}
+		correctPass = doPasswordsMatch(passwordInput, confirmPass);
 		if (!nameInput.equals("retry") && !emailInput.equals("retry") && !passwordInput.equals("retry") && correctPass){
 			e1 = new Account(emailInput, passwordInput, nameInput);
 			check(e1);

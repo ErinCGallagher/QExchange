@@ -11,6 +11,7 @@ public final class R {
     public static final class attr {
     }
     public static final class color {
+        public static final int custom_theme_color=0x7f050002;
         public static final int priceColor=0x7f050001;
         public static final int red=0x7f050000;
     }
@@ -21,11 +22,12 @@ public final class R {
          screen margins) for sw720dp devices (e.g. 10" tablets) in landscape here.
     
          */
-        public static final int activity_horizontal_margin=0x7f060000;
-        public static final int activity_vertical_margin=0x7f060001;
+        public static final int activity_horizontal_margin=0x7f070000;
+        public static final int activity_vertical_margin=0x7f070001;
     }
     public static final class drawable {
         public static final int ic_launcher=0x7f020000;
+        public static final int logo1=0x7f020001;
     }
     public static final class id {
         public static final int LinearLayout1=0x7f0a0020;
@@ -90,22 +92,22 @@ public final class R {
         public static final int search_result_page=0x7f090006;
     }
     public static final class string {
-        public static final int action_settings=0x7f070001;
-        public static final int app_label=0x7f07000f;
-        public static final int app_name=0x7f070000;
-        public static final int createAccountPrompt=0x7f07000c;
-        public static final int hello_world=0x7f070002;
-        public static final int passHint=0x7f07000d;
-        public static final int passPrompt=0x7f07000b;
-        public static final int submitPrompt=0x7f07000a;
-        public static final int title_activity_account_page=0x7f070006;
-        public static final int title_activity_book_info_page=0x7f070007;
-        public static final int title_activity_book_page=0x7f070004;
-        public static final int title_activity_create_account=0x7f070003;
-        public static final int title_activity_main_page=0x7f070005;
-        public static final int title_activity_search_result_page=0x7f070008;
-        public static final int userHint=0x7f07000e;
-        public static final int userPrompt=0x7f070009;
+        public static final int action_settings=0x7f080001;
+        public static final int app_label=0x7f08000f;
+        public static final int app_name=0x7f080000;
+        public static final int createAccountPrompt=0x7f08000c;
+        public static final int hello_world=0x7f080002;
+        public static final int passHint=0x7f08000d;
+        public static final int passPrompt=0x7f08000b;
+        public static final int submitPrompt=0x7f08000a;
+        public static final int title_activity_account_page=0x7f080006;
+        public static final int title_activity_book_info_page=0x7f080007;
+        public static final int title_activity_book_page=0x7f080004;
+        public static final int title_activity_create_account=0x7f080003;
+        public static final int title_activity_main_page=0x7f080005;
+        public static final int title_activity_search_result_page=0x7f080008;
+        public static final int userHint=0x7f08000e;
+        public static final int userPrompt=0x7f080009;
     }
     public static final class style {
         /** 
@@ -129,11 +131,13 @@ public final class R {
     
  API 14 theme customizations can go here. 
          */
-        public static final int AppBaseTheme=0x7f080000;
+        public static final int AppBaseTheme=0x7f060002;
         /**  Application theme. 
  All customizations that are NOT specific to a particular API-level can go here. 
          */
-        public static final int AppTheme=0x7f080001;
+        public static final int AppTheme=0x7f060003;
+        public static final int CustomTheme=0x7f060000;
+        public static final int MyActionBar=0x7f060001;
     }
     public static final class xml {
         public static final int searchable=0x7f040000;

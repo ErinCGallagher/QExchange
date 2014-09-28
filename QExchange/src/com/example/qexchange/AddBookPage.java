@@ -42,19 +42,45 @@ public class AddBookPage extends Activity {
 		
 		EditText editTitle = (EditText) findViewById(R.id.nameField);
 		title = isTextValid(editTitle);
+		if (title.length() > 50) {
+			title = "retry";
+			editTitle.setError("Book titles must be no longer than 50 characters");
+		}
 		EditText editAuthor = (EditText) findViewById(R.id.newPassField);
 		author = isTextValid(editAuthor);
+		if (author.length() > 50) {
+			author = "retry";
+			editAuthor.setError("Author names must be no longer than 50 characters");
+		}
 		EditText editEdition = (EditText) findViewById(R.id.editText5);
 		edition = isIntValid(editEdition);
+		if (edition > 1000 || edition <= 0) {
+			edition = 0;
+			editEdition.setError("Not a valid edition number");
+		}
 		EditText editCourseCode = (EditText) findViewById(R.id.confirmPassField);
 		courseCode = isTextValid(editCourseCode);
+		if (courseCode.length() > 11 || courseCode.length() < 7) {
+			courseCode = "retry";
+			editCourseCode.setError("Not a valid course code");
+		} else {
+			//removes all spaces from course code
+			courseCode = courseCode.replaceAll("\\s","");
+		}
 		EditText editPrice = (EditText) findViewById(R.id.emailField);
 		price = isDoubleValid(editPrice);	
+		if (price > 1000 || price <= 0) {
+			price = 0;
+			editPrice.setError("Please enter a price between 0 and 1000");
+		}
 		EditText editComment = (EditText) (findViewById(R.id.editText1));
 		comment = editComment.getText().toString();
-
+		if (comment.length() > 200) {
+			comment = "retry";
+			editComment.setError("Comments can be no longer than 200 characters");
+		}
 		//all input if correct; add to database
-		if (!title.equals("retry") && !author.equals("retry")  && edition!=0 && !courseCode.equals("retry") && price != 0 ){
+		if (!title.equals("retry") && !author.equals("retry")  && edition!=0 && !courseCode.equals("retry") && price != 0 && !comment.equals("retry")){
 			Book b1 = new Book(title, author,edition, price, comment, courseCode );
 			String query = "INSERT INTO Books (title, author, edition, course, price, userEmail, comment) VALUES ('"+title+"','"+author+"','"+edition+"','"+courseCode+"','"+price+"','"+emailInput+"','"+comment+"')";
 			try {
