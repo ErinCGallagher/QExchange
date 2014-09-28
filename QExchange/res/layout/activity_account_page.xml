@@ -25,24 +25,15 @@
         android:layout_alignLeft="@+id/textView1"
         android:layout_below="@+id/textView1"
         android:layout_marginTop="34dp"
+        android:maxEms="35"
         android:text="myEmail"
-        android:textSize = "18sp" />
+        android:textSize="18sp" />
    
 <LinearLayout android:id="@+id/listingContainer"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_below="@id/textView3"
     android:orientation="vertical"></LinearLayout>
-
-<TextView
-    android:id="@+id/textView1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/textView2"
-    android:layout_marginTop="22dp"
-    android:layout_toLeftOf="@+id/textView2"
-    android:text="myName"
-    android:textSize="18sp" />
 
 <Button
     android:id="@+id/addBook"
@@ -62,5 +53,16 @@
     android:layout_alignTop="@+id/listingContainer" >
 
 </ListView>
+
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@+id/textView2"
+    android:layout_centerHorizontal="true"
+    android:layout_marginTop="27dp"
+    android:maxEms="35"
+    android:text="myName"
+    android:textSize="18sp" />
 
 </RelativeLayout>

@@ -1,5 +1,8 @@
 package com.example.qexchange;
 
+import java.sql.SQLException;
+import java.util.concurrent.ExecutionException;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
@@ -7,9 +10,13 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class AccountPage extends Activity {
-	String emailInput;
+	String emailInput, inputName;
+	Connect database = new Connect();
+	TextView nameText, emailText;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -20,6 +27,38 @@ public class AccountPage extends Activity {
 		Intent i = getIntent();
 		emailInput = i.getStringExtra("email");
 		System.out.println("email main from account"+emailInput);
+		try {
+			query();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		emailText = (TextView)findViewById(R.id.textView3);
+		emailText.setText(emailInput);
+		nameText = (TextView)findViewById(R.id.textView1);
+		nameText.setText(inputName);
+		
+	}
+	
+	public void query()throws SQLException, InterruptedException, ExecutionException{
+		java.sql.ResultSet result =null;
+		String st = "SELECT name FROM Accounts WHERE email = ('"+emailInput+"')";
+		result = database.execute("SELECT",st).get();
+		//int email = result.findColumn("email");
+		//int password  = result.findColumn("password");
+		int name;
+		name = result.findColumn("name");
+		while(result.next()) {
+			inputName = result.getString(name);
+			System.out.println("getName"+inputName);
+
+		}
 	}
 
 	@Override
