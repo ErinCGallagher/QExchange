@@ -40,7 +40,7 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		setContentView(R.layout.activity_search_result_page);
 		
 		obj = getIntent().getParcelableExtra("userAccount");
-
+		searchInput = getIntent().getStringExtra("search");
 		try {
 			queryBooks();
 		} catch (SQLException e) {
@@ -86,7 +86,7 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 
 	public void queryBooks()throws SQLException, InterruptedException, ExecutionException{
 		java.sql.ResultSet result =null;
-		String st = "SELECT * FROM Books WHERE course = ('"+searchInput+"')";
+		String st = "SELECT * FROM Books WHERE course = '"+searchInput+"'";
 		result = database.execute("SELECT",st).get();
 		int title;
 		int author;

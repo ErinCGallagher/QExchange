@@ -46,7 +46,8 @@ public class MainPage extends Activity {
 	
 	public void launchSearchPage(View view){
 		searchInput = (SearchView)findViewById(R.id.searchView1);
-		searchResults =searchInput.getQuery().toString();
+		searchResults =searchInput.getQuery().toString().trim();
+		searchResults = searchResults.replaceAll("\\s","");
     	//startActivity(new Intent(MainPage.this, SearchResultPage.class));
 		Intent j = new Intent(
 				MainPage.this,
