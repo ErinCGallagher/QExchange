@@ -79,7 +79,7 @@ public class Book implements Parcelable{
 			this.tag = tag;
 		}
 		
-		//parcel part...
+		//parcel part
 		public Book(Parcel in){
 			String[] data = new String[6];
 
