@@ -25,7 +25,7 @@ public class CreateAccountPage extends Activity {
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
-		
+
 	}
 
 	@Override
@@ -40,38 +40,41 @@ public class CreateAccountPage extends Activity {
 	}
 
 	public void createNewAccount(View view){
-		String name, email, password, confirmPass, correctPass;
-		
+		String nameInput, emailInput, passwordInput, confirmPass = null;
+		Boolean correctPass = false;
+
 		nameField = (EditText)findViewById(R.id.nameField);
-		name = isTextValid(nameField);
+		nameInput = isTextValid(nameField);
 		passwordField = (EditText)findViewById(R.id.newPassField);
-		password = isTextValid(passwordField);
+		passwordInput = isTextValid(passwordField);
 		confirmField = (EditText)findViewById(R.id.confirmPassField);
-		confirmPass = isTextValid(passwordField);
-		
+		if (passwordInput.length() > 5){
+			System.out.println("greater than 5");
+			confirmPass = isTextValid(confirmField);
+		}
+		else{
+			confirmField.setError("must be > 5 letters");
+			passwordField.setError("must be > 5 letters");
+			
+		}
+		correctPass = doPasswordsMatch(passwordInput, confirmPass);
 		emailField = (EditText)findViewById(R.id.emailField);
-		
-		
-		String emailInput = emailField.getText().toString();
-		String passwordInput = passwordField.getText().toString();
-		String nameInput = nameField.getText().toString();
-		if (!passwordInput.equals(confirmField.getText().toString())){
-			Toast toast = Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_LONG);
-			toast.show();
-		} else if (passwordInput.length() < 5) {
-			Toast toast = Toast.makeText(getApplicationContext(), "Passwords must be at least 5 characters", Toast.LENGTH_LONG);
-			toast.show();
-		} else if (nameInput.length() <= 0) {
-			Toast toast = Toast.makeText(getApplicationContext(), "Please enter a valid name", Toast.LENGTH_LONG);
-			toast.show();
-		} else {
-			//create account: add appropriate info to tables, check that email not already there
+		emailInput = isTextValid(emailField);
+		System.out.println("emailInput"+ emailInput);
+		if (!nameInput.equals("retry") && !emailInput.equals("retry") && !passwordInput.equals("retry") && correctPass){
+			Account e1 = new Account(emailInput, passwordInput, nameInput);
+			check(e1);
+		}
+
+	}
+	private void check(Account e1){
 			try {
-				if (Query.CheckEmailExists(emailInput)) {
+				if (Query.CheckEmailExists(e1.getEmail())) {
 					Toast toast = Toast.makeText(getApplicationContext(), "Email already in use!", Toast.LENGTH_LONG);
 					toast.show();
+					emailField.setError("Email in Use");
 				} else {
-					String query = "INSERT INTO Accounts (email, password, name) VALUES ('"+emailInput+"','"+passwordInput+"','"+nameInput+"')";
+					String query = "INSERT INTO Accounts (email, password, name) VALUES ('"+e1.getEmail()+"','"+e1.getPassword()+"','"+e1.getName()+"')";
 					Query.query("INSERT", query);
 					startActivity(new Intent(CreateAccountPage.this, MainPage.class));
 				}
@@ -84,8 +87,8 @@ public class CreateAccountPage extends Activity {
 			}
 		}
 
-	}
-	
+	//}
+
 	private String isTextValid(EditText text){
 		if (text.getText().toString().trim().length() == 0){
 			text.setError("Cannot be empty string");
@@ -93,6 +96,18 @@ public class CreateAccountPage extends Activity {
 		}
 		else
 			return text.getText().toString();
+	}
+
+	private Boolean doPasswordsMatch(String one, String two){
+		if (one.equals(two)){
+			return true;
+		}
+		else{
+			confirmField.setError("not same password");
+			passwordField.setError("not same password");
+			return false;
+		}
+			
 	}
 
 	@Override
