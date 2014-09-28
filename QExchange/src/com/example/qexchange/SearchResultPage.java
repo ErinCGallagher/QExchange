@@ -3,6 +3,7 @@ package com.example.qexchange;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.ListActivity;
@@ -12,6 +13,7 @@ import android.content.Intent;
 import android.content.Loader;
 import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -37,6 +39,10 @@ public class SearchResultPage extends ListActivity  {
 		BookListAdapter bookAdapter = new BookListAdapter();
 		ListView bookList = (ListView)findViewById(android.R.id.list);
 		bookList.setAdapter(bookAdapter);
+		
+		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+		}
 
 	}
 
@@ -125,6 +131,25 @@ public class SearchResultPage extends ListActivity  {
 		BookList.add(new Book("Evil", "Dove", 1, 250.00, "CISC327"));
 		return BookList;
 
+	}
+	
+	public void launchMainPage(View view) {
+		Intent j = new Intent(
+				SearchResultPage.this,
+				MainPage.class);
+    	startActivity(j);
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		//Bundle b = new Bundle();
+		//b.putSerializable(Constants.CUSTOM_LISTING,e1);
+		Intent j = new Intent(
+				SearchResultPage.this,
+				MainPage.class);
+    	startActivity(j);
+		finish();
+		return true;
 	}
 
 }
