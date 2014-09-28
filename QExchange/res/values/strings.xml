@@ -13,7 +13,7 @@
     <string name="userPrompt">Username:</string>
     <string name="submitPrompt">Submit</string>
     <string name="passPrompt">Password:</string>
-    <string name="createAccountPrompt">Create Account</string>
+    <string name="createAccountPrompt">Don\'t have an account?</string>
     <string name="passHint">Password</string>
     <string name="userHint">Username</string>
     <string name="app_label">QExchange</string>

@@ -8,6 +8,8 @@ import java.util.concurrent.ExecutionException;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
@@ -44,10 +46,16 @@ public class LoginPage extends Activity {
 		String emailInput = usernameField.getText().toString();
 		String passwordInput = passwordField.getText().toString();
 		Account userAccount;
-		if (emailInput.length() <= 0 || emailInput.length() >= 50 || passwordInput.length() < 5 || passwordInput.length() >= 20){
-			Toast toast = Toast.makeText(getApplicationContext(), "Please enter valid username and password", Toast.LENGTH_LONG);
-			toast.show();
-		} else {
+		boolean validInput = true;
+		if (emailInput.length() <= 0 || emailInput.length() >= 50 ) {
+			usernameField.setError("Enter valid username"); 
+			validInput = false;
+		} 
+		if (passwordInput.length() < 5 || passwordInput.length() >= 20){
+			passwordField.setError("Enter valid password");
+			validInput = false;
+		} 
+		if (validInput) {
 			String query = "SELECT * FROM Accounts WHERE email = '"+emailInput+"' AND password = '"+passwordInput+"'";
 			System.out.println(query);
 			try {
@@ -70,8 +78,23 @@ public class LoginPage extends Activity {
 					j.putExtra("userAccount", userAccount);
 					startActivity(j);
 				} else {
-					Toast toast = Toast.makeText(getApplicationContext(), "Please enter valid username and password", Toast.LENGTH_LONG);
-					toast.show();
+					//Toast toast = Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_LONG);
+					//toast.show();
+					
+					AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
+
+		            dlgAlert.setMessage("Invalid username or password.");
+		            dlgAlert.setTitle("Login failed");
+		            dlgAlert.setPositiveButton("OK", null);
+		            dlgAlert.setCancelable(true);
+		            dlgAlert.create().show();
+
+		            dlgAlert.setPositiveButton("Ok",
+		                    new DialogInterface.OnClickListener() {
+		                public void onClick(DialogInterface dialog, int which) {
+
+		                }
+		            });
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

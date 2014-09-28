@@ -12,51 +12,41 @@
         android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/searchView1"
         android:layout_alignParentRight="true"
         android:layout_below="@+id/searchView1"
-        android:layout_toRightOf="@+id/account"
         android:onClick="launchSearchPage"
         android:text="Search" />
 
-    <ListView
-        android:id="@+id/listView1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/account"
-        android:layout_below="@+id/textView1" >
-
-    </ListView>
-
-    <Button
-        android:id="@+id/account"
+    <ImageView
+        android:id="@+id/imageView1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="200dp"
         android:layout_alignLeft="@+id/searchView1"
-        android:layout_below="@+id/searchView1"
-        android:onClick="launchAccountPage"
-        android:text="Account" />
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@+id/searchView1"
+        android:layout_marginTop="17dp"
+        android:src="@drawable/textbook" />
 
     <SearchView
         android:id="@+id/searchView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:layout_below="@+id/imageView1"
         android:layout_centerHorizontal="true"
         android:iconifiedByDefault="false"
         android:queryHint="ex cisc121" >
+
     </SearchView>
 
-    <TextView
-        android:id="@+id/textView1"
+    <Button
+        android:id="@+id/account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/listView1"
-        android:layout_alignRight="@+id/listView1"
+        android:layout_alignLeft="@+id/button1"
+        android:layout_alignRight="@+id/button1"
         android:layout_below="@+id/button1"
-        android:layout_marginTop="14dp"
-        android:gravity="center"
-        android:text="News Feed"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textSize="24sp" />
+        android:onClick="launchAccountPage"
+        android:text="Account" />
 
 </RelativeLayout>

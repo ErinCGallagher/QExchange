@@ -2,5 +2,6 @@
 <resources>
     <color name="red">#F00</color>
     <color name="priceColor">#006600</color>
+    <color name="blueText">#0099CC</color>
     
 </resources>

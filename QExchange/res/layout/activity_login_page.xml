@@ -42,12 +42,6 @@
                     android:onClick="submitLogin"
                     android:text="@+string/submitPrompt" />
 
-                <Button
-                    android:id="@+id/createAccountButton"
-                    android:layout_width="150dip"
-                    android:layout_height="wrap_content"
-                    android:onClick="launchCreateAccountPage"
-                    android:text="@+string/createAccountPrompt" />
             </LinearLayout>
 
             <LinearLayout
@@ -96,6 +90,18 @@
                 android:layout_below="@+id/linearLayout2"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/logo1" />
+
+            <Button
+                android:id="@+id/createAccountButton"
+                style="?android:attr/buttonStyleSmall"
+                android:layout_width="166dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:background="@android:color/transparent"
+                android:onClick="launchCreateAccountPage"
+                android:text="@+string/createAccountPrompt"
+                android:textColor="@color/blueText" />
 
         </RelativeLayout>
     </LinearLayout>

@@ -6,9 +6,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 public class BookInfoPage extends Activity {
-	String name, author, comment, course;
+	String name, author, comment, course, email;
 	int edition;
 	double price;
 	Book obj;
@@ -28,8 +29,23 @@ public class BookInfoPage extends Activity {
 		price = obj.getPrice();
 		comment = obj.getComment();
 		course = obj.getTag();
-		System.out.println("course"+course);
-		System.out.println("author"+author);
+		email = obj.getEmail();
+		
+		
+		TextView emailText = (TextView)findViewById(R.id.emailText);
+		emailText.setText(email);
+		TextView titleText = (TextView)findViewById(R.id.titleText);
+		titleText.setText(name);
+		TextView authorText = (TextView)findViewById(R.id.authorText);
+		authorText.setText(author);
+		TextView editionText = (TextView)findViewById(R.id.editionText);
+		editionText.setText(Integer.toString(edition));
+		TextView priceText = (TextView)findViewById(R.id.priceText);
+		priceText.setText(Double.toString(price));
+		TextView courseText = (TextView)findViewById(R.id.courseText);
+	    courseText.setText(course);
+		
+		
 		
 		//for going "back" to the account page
 		account = getIntent().getParcelableExtra("userAccount");

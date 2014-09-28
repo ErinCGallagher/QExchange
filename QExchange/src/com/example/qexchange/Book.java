@@ -10,6 +10,7 @@ public class Book implements Parcelable{
 	private int edition;
 	private double price;
 	private String tag;
+	private String email;
 	
 		
 		public Book(){
@@ -22,12 +23,13 @@ public class Book implements Parcelable{
 			
 		}
 		
-		public Book(String name, String author, int edition, double price, String comment, String tag){
+		public Book(String name, String author, int edition, double price, String comment, String tag, String email){
 			this.name = name;
 			this.edition = edition;
 			this.price = price;
 			this.tag = tag;
 			this.author = author;
+			this.email = email;
 		}
 
 		public String getName(){
@@ -51,7 +53,9 @@ public class Book implements Parcelable{
 		public String getTag(){
 			return tag;
 		}
-		
+		public String getEmail(){
+			return email;
+		}
 		public void setName(String name){
 			this.name = name;
 		}
