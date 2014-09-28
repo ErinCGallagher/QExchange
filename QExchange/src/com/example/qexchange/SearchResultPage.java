@@ -35,7 +35,7 @@ public class SearchResultPage extends ListActivity  {
 		Book[] TempList = null; //placeholder
 
 		BookListAdapter bookAdapter = new BookListAdapter();
-		ListView bookList = (ListView)findViewById(R.id.listView1);
+		ListView bookList = (ListView)findViewById(R.id.listView);
 		bookList.setAdapter(bookAdapter);
 
 	}
@@ -78,7 +78,6 @@ public class SearchResultPage extends ListActivity  {
 		}
 
 		public long getItemId(int arg0) {
-			// TODO Auto-generated method stub
 			return arg0;
 		}
 
