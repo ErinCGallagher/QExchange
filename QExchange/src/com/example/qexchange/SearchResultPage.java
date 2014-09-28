@@ -20,13 +20,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 
-public class SearchResultPage extends ListActivity  {
+public class SearchResultPage extends ListActivity implements OnItemClickListener  {
 	
 	Connect database = new Connect();
 	String title,author,course, edition,price;
@@ -71,6 +73,13 @@ public class SearchResultPage extends ListActivity  {
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 
+	}
+	
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		Book currentBook = BookList.get(position);
+		
 	}
 
 	@Override
@@ -215,7 +224,6 @@ public class SearchResultPage extends ListActivity  {
 		finish();
 		return true;
 	}
-
 }
 
 
