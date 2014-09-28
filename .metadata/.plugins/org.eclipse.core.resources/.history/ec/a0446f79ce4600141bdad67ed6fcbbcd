@@ -31,6 +31,21 @@ public class AddBookPage extends Activity {
 		Intent i = getIntent();
 		emailInput = i.getStringExtra("email");
 		System.out.println("email from addBookPage "+emailInput);
+		/*
+		try {
+			query();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ExecutionException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		 */
+
 	}
 
 	public void submitBook (View v){
@@ -49,12 +64,12 @@ public class AddBookPage extends Activity {
 		EditText editPrice = (EditText) findViewById(R.id.emailField);
 		price = isDoubleValid(editPrice);	
 		EditText editComment = (EditText) (findViewById(R.id.editText1));
-		comment = editComment.getText().toString();
+		comment = editComment.toString();
 
 		//all input if correct; add to database
 		if (!title.equals("retry") && !author.equals("retry")  && edition!=0 && !courseCode.equals("retry") && price != 0 ){
 			Book b1 = new Book(title, author,edition, price, courseCode );
-			String query = "INSERT INTO Books (title, edition, course, price, userEmail, comment) VALUES ('"+title+"','"+edition+"','"+courseCode+"','"+price+"','"+emailInput+"','"+comment+"')";
+			String query = "INSERT INTO Books (title, edition, course, price, userEmail, comment) VALUES ('"+title+"','"+edition+"','"+courseCode+"','"+price+"','"+emailInput+"','"+comment+"'";
 			try {
 				Query.query("INSERT", query);
 			} catch (SQLException e) {
