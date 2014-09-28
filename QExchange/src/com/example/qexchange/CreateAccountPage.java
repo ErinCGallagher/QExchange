@@ -90,7 +90,7 @@ public class CreateAccountPage extends Activity {
 							CreateAccountPage.this,
 							MainPage.class);
 					//j.putExtra("email", e1.getEmail());
-					j.putExtra("userAcount", userAccount);
+					j.putExtra("userAccount", userAccount);
 					startActivity(j);
 					//startActivity(new Intent(CreateAccountPage.this, MainPage.class));
 				}

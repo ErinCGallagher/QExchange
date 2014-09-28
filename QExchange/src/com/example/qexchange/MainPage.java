@@ -22,7 +22,7 @@ public class MainPage extends Activity {
 		Intent i = getIntent();
 		//emailInput = i.getStringExtra("email");
 		//System.out.println("email main"+emailInput);
-		obj = getIntent().getParcelableExtra("userAcount");
+		obj = getIntent().getParcelableExtra("userAccount");
 		name = obj.getName();
 		emailInput = obj.getEmail();
 		System.out.println("email main"+emailInput);
@@ -40,7 +40,7 @@ public class MainPage extends Activity {
 				MainPage.this,
 				AccountPage.class);
 		//j.putExtra("email", emailInput);
-		j.putExtra("userAcount", obj);
+		j.putExtra("userAccount", obj);
 		startActivity(j);
     	//startActivity(new Intent(MainPage.this, AccountPage.class));
     }
