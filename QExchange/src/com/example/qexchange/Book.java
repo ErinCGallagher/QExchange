@@ -24,6 +24,7 @@ public class Book {
 			this.edition = edition;
 			this.price = price;
 			this.tag = tag;
+			this.author = author;
 		}
 
 		public String getName(){
