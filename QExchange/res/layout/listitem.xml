@@ -35,21 +35,23 @@
         android:id="@+id/listingAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/listingName"
-        android:layout_toRightOf="@+id/imageView2"
         android:layout_alignBaseline="@+id/imageView2"
-        android:text="AUTHOR NAME"
+        android:layout_below="@+id/listingName"
+        android:layout_toLeftOf="@+id/listingPrice"
+        android:layout_toRightOf="@+id/imageView2"
         android:paddingTop="4dp"
+        android:text="AUTHOR NAME"
         android:textSize="14sp" />
 
     <TextView
         android:id="@+id/listingName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/listingAuthor"
+        android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
-        android:text="BOOK NAME"
+        android:layout_toRightOf="@+id/imageView2"
         android:paddingTop="10dp"
+        android:text="BOOK NAME"
         android:textSize="14sp" />
 
 </RelativeLayout>
