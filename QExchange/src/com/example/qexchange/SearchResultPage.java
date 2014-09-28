@@ -33,6 +33,7 @@ public class SearchResultPage extends ListActivity  {
 	String title1, author1, comment1,course1;
 	int edition1;
 	double price1;
+	List<Book> BookList;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,13 +48,6 @@ public class SearchResultPage extends ListActivity  {
 
 		Book[] TempList = null; //placeholder
 
-		BookListAdapter bookAdapter = new BookListAdapter();
-		ListView bookList = (ListView)findViewById(android.R.id.list);
-		bookList.setAdapter(bookAdapter);
-		
-		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
 		try {
 			queryBooks();
 		} catch (SQLException e) {
@@ -65,6 +59,14 @@ public class SearchResultPage extends ListActivity  {
 		} catch (ExecutionException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}
+
+		BookListAdapter bookAdapter = new BookListAdapter();
+		ListView bookList = (ListView)findViewById(android.R.id.list);
+		bookList.setAdapter(bookAdapter);
+		
+		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
+			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
 
 	}
@@ -79,7 +81,7 @@ public class SearchResultPage extends ListActivity  {
 	public void searchDatabase(String query){
 		//TODO
 	}
-	
+
 	public void queryBooks()throws SQLException, InterruptedException, ExecutionException{
 		java.sql.ResultSet result =null;
 		String st = "SELECT * FROM Books WHERE course = ('"+searchInput+"')";
@@ -98,7 +100,7 @@ public class SearchResultPage extends ListActivity  {
 		price = result.findColumn("price");
 		comment = result.findColumn("comment");
 		course = result.findColumn("course");
-		List<Book> BookList = new ArrayList<Book>();
+		BookList = new ArrayList<Book>();
 		while(result.next()) {
 			title1 = result.getString(title);
 			author1 = result.getString(author);
@@ -108,7 +110,7 @@ public class SearchResultPage extends ListActivity  {
 			course1 = result.getString(course);
 			System.out.println("getName"+title1);
 			System.out.println("getEdition"+edition1);
-			BookList.add(new Book(title1,author,edition1,price1,comment1,course1));
+			BookList.add(new Book(title1,author1,edition1,price1,comment1,course1));
 
 		}
 	}
@@ -127,7 +129,8 @@ public class SearchResultPage extends ListActivity  {
 
 	public class BookListAdapter extends BaseAdapter {
 
-		List<Book> bookList = getDataForListView();
+		List<Book> bookList = BookList;
+		//List<Book> bookList = getDataForListView();
 
 
 		public int getCount(){
@@ -175,20 +178,20 @@ public class SearchResultPage extends ListActivity  {
 
 	}
 	//End Class
-
+/*
 	public List<Book> getDataForListView(){
 
 		List<Book> BookList = new ArrayList<Book>();
 
 
-		BookList.add(new Book("Algorithms", "Dawes", 1, 199.99, "CISC365"));
-		BookList.add(new Book("Python", "Lamb", 1, 132.00, "CISC101"));
-		BookList.add(new Book("Logic", "Glasgow", 1, 75.00, "CISC204"));
-		BookList.add(new Book("Evil", "Dove", 1, 250.00, "CISC327"));
+		BookList.add(new Book("Algorithms", "Dawes", 1, 199.99, "good","CISC365"));
+		BookList.add(new Book("Python", "Lamb", 1, 132.00, "good","CISC101"));
+		BookList.add(new Book("Logic", "Glasgow", 1, 75.00, "good","CISC204"));
+		BookList.add(new Book("Evil", "Dove", 1, 250.00, "good","CISC327"));
 		return BookList;
 
 	}
-	
+*/
 	public void launchMainPage(View view) {
 		Intent j = new Intent(
 				SearchResultPage.this,

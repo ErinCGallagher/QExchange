@@ -3,6 +3,7 @@ package com.example.qexchange;
 public class Book {
 	private String name;
 	private String author;
+	private String comment;
 	private int edition;
 	private double price;
 	private String tag;
@@ -13,11 +14,12 @@ public class Book {
 			author = " ";
 			edition = 1;
 			price = 0;
+			comment =" ";
 			tag = " ";
 			
 		}
 		
-		public Book(String name, String author, int edition, double price, String tag){
+		public Book(String name, String author, int edition, double price, String comment, String tag){
 			this.name = name;
 			this.edition = edition;
 			this.price = price;
@@ -38,6 +40,10 @@ public class Book {
 			return price;
 		}
 		
+		public String getComment(){
+			return comment;
+		}
+		
 		public String getTag(){
 			return tag;
 		}
@@ -55,6 +61,10 @@ public class Book {
 		
 		public void setPrice(double price){
 			this.price = price;
+		}
+		
+		public void setComment(String comment){
+			this.comment = comment;
 		}
 		
 		public void setTag(String tag){

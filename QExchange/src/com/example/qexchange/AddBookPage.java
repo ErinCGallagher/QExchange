@@ -53,8 +53,8 @@ public class AddBookPage extends Activity {
 
 		//all input if correct; add to database
 		if (!title.equals("retry") && !author.equals("retry")  && edition!=0 && !courseCode.equals("retry") && price != 0 ){
-			Book b1 = new Book(title, author,edition, price, courseCode );
-			String query = "INSERT INTO Books (title, edition, course, price, userEmail, comment) VALUES ('"+title+"','"+edition+"','"+courseCode+"','"+price+"','"+emailInput+"','"+comment+"')";
+			Book b1 = new Book(title, author,edition, price, comment, courseCode );
+			String query = "INSERT INTO Books (title, author, edition, course, price, userEmail, comment) VALUES ('"+title+"','"+author+"','"+edition+"','"+courseCode+"','"+price+"','"+emailInput+"','"+comment+"')";
 			try {
 				Query.query("INSERT", query);
 			} catch (SQLException e) {
