@@ -6,7 +6,7 @@
 
     
     
-    <ImageView android:id="@+id/listingIcon"
+    <ImageView android:id="@+id/imageView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"

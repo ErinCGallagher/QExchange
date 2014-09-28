@@ -45,6 +45,7 @@ public final class R {
         public static final int imageView1=0x7f0a0012;
         public static final int linearLayout1=0x7f0a0017;
         public static final int linearLayout2=0x7f0a001d;
+        public static final int listView=0x7f0a001f;
         public static final int listView1=0x7f0a0006;
         public static final int listingAuthor=0x7f0a0024;
         public static final int listingContainer=0x7f0a0004;
