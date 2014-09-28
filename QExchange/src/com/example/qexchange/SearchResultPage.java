@@ -26,23 +26,20 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 	
 	Connect database = new Connect();
 	String title,author,course, edition,price;
-	BookListAdapter BookAdapter;
+	BookListAdapter bookAdapter;
 	String emailInput, searchInput;
 	String title1, author1, comment1,course1;
 	int edition1;
 	double price1;
 	List<Book> BookList;
+	Book obj;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_result_page);
 		
-		Intent i = getIntent();
-		emailInput = i.getStringExtra("email");
-		searchInput = i.getStringExtra("search");
-		System.out.println("email from search"+emailInput);
-		System.out.println("email from search"+searchInput);
+		obj = getIntent().getParcelableExtra("userAccount");
 
 		try {
 			queryBooks();
@@ -71,6 +68,12 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		Book currentBook = BookList.get(position);
+		Intent j = new Intent(
+				SearchResultPage.this,
+				BookInfoPage.class);
+		j.putExtra("newBook", currentBook);
+		j.putExtra("userAccount", obj);
+		startActivity(j);
 		
 	}
 
@@ -176,7 +179,7 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		Intent j = new Intent(
 				SearchResultPage.this,
 				MainPage.class);
-		j.putExtra("email", emailInput);
+		j.putExtra("userAccount", obj);
     	startActivity(j);
 		finish();
 		return true;

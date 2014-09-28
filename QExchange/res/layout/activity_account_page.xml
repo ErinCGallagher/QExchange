@@ -1,68 +1,41 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/myBooks"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context=".AccountPage" >
+    tools:context=".MainPage" >
 
-    <TextView
-        android:id="@+id/textView2"
+    <Button
+        android:id="@+id/account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:onClick="launchAccountPage"
+        android:text="Account" />
+
+    <SearchView
+        android:id="@+id/searchView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/account"
+        android:layout_toRightOf="@+id/account"
+        android:iconifiedByDefault="false"
+        android:queryHint="ex cisc121" >
+
+    </SearchView>
+
+    <Button
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
-        android:gravity="center"
-        android:text="My Listings"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
-        android:layout_marginTop="34dp"
-        android:maxEms="35"
-        android:text="myEmail"
-        android:textSize="18sp" />
-   
-<LinearLayout android:id="@+id/listingContainer"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_below="@id/textView3"
-    android:orientation="vertical"></LinearLayout>
-
-<Button
-    android:id="@+id/addBook"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_alignParentBottom="true"
-    android:layout_centerHorizontal="true"
-    android:onClick="launchAddBookPage"
-    android:text="Add Book" />
-
-<ListView
-    android:id="@+id/listView1"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_above="@+id/addBook"
-    android:layout_alignRight="@+id/listingContainer"
-    android:layout_alignTop="@+id/listingContainer" >
-
-</ListView>
-
-<TextView
-    android:id="@+id/textView1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_below="@+id/textView2"
-    android:layout_centerHorizontal="true"
-    android:layout_marginTop="27dp"
-    android:maxEms="35"
-    android:text="myName"
-    android:textSize="18sp" />
+        android:layout_centerVertical="true"
+        android:onClick="launchSearchPage"
+        android:text="Search" />
 
 </RelativeLayout>

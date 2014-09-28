@@ -29,7 +29,7 @@ public class AccountPage extends Activity implements OnItemClickListener{
 	TextView nameText, emailText;
 	
 	String title,author,course, edition,price;
-	BookListAdapter BookAdapter;
+	BookListAdapter bookAdapter;
 	String title1, author1, comment1,course1;
 	int edition1;
 	double price1;
@@ -53,9 +53,7 @@ public class AccountPage extends Activity implements OnItemClickListener{
 		emailText.setText(emailInput);
 		nameText = (TextView)findViewById(R.id.textView1);
 		nameText.setText(inputName);
-		
-
-		Book[] TempList = null; //placeholder
+	
 
 		try {
 			queryBooks();
@@ -71,7 +69,7 @@ public class AccountPage extends Activity implements OnItemClickListener{
 		}
 		
 
-		BookListAdapter bookAdapter = new BookListAdapter();
+		bookAdapter = new BookListAdapter();
 		ListView bookList = (ListView)findViewById(R.id.listView1);
 		bookList.setOnItemClickListener(this);
 		bookList.setAdapter(bookAdapter);

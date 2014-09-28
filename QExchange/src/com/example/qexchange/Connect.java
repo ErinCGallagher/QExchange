@@ -21,6 +21,7 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 	String serverName = "sql3.freesqldatabase.com";
 	int portNumber = 3306;
 	Connection conn;
+	private volatile boolean running = true;
 
 	@Override
 	protected ResultSet doInBackground(String... arg0) throws SQLException {
@@ -96,6 +97,7 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 		}
 		return results;
 	}
+
 
 
 }
