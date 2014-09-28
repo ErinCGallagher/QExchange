@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+
+    
+    
+    <ImageView android:id="@+id/listingIcon"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp"
+        
+        android:src="@drawable/ic_launcher"
+        />
+    
+    <TextView android:id="@+id/listingName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_marginLeft="23dp"
+        android:layout_marginTop="10dp"
+        android:layout_toRightOf="@+id/listingIcon"
+        android:layout_alignParentRight="true"
+        android:text="BOOK NAME"
+        android:textSize="14sp" />
+    
+    <TextView android:id="@+id/listingAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_alignBottom="@+id/listingIcon"
+        android:layout_alignLeft="@+id/listingName"
+        android:text="AUTHOR NAME"
+		android:textSize="14sp"/>
+    
+    
+    <TextView android:id="@+id/listingPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+        android:layout_marginRight="10dp"
+        android:layout_alignBottom="@+id/listingIcon"
+        android:layout_alignParentRight="true"
+        android:text="LISTING PRICE" 
+        android:textSize="14sp"
+        android:textColor="@color/priceColor"
+        android:textStyle="bold"
+        />
+        
+
+</RelativeLayout>
