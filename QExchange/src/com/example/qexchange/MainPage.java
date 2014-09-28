@@ -6,12 +6,13 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainPage extends Activity {
 	private String emailInput, searchResults; 
-	EditText searchInput;
+	SearchView searchInput;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +40,7 @@ public class MainPage extends Activity {
     }
 	
 	public void launchSearchPage(View view){
-		searchInput = (EditText)findViewById(R.id.searchView1);
+		searchInput = (SearchView)findViewById(R.id.searchView1);
 		searchResults = searchInput.toString();
     	//startActivity(new Intent(MainPage.this, SearchResultPage.class));
 		Intent j = new Intent(
