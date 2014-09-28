@@ -31,6 +31,7 @@ public class AddBookPage extends Activity {
 		Intent i = getIntent();
 		emailInput = i.getStringExtra("email");
 		System.out.println("email from addBookPage "+emailInput);
+
 	}
 
 	public void submitBook (View v){
