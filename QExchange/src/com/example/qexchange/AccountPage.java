@@ -28,7 +28,7 @@ public class AccountPage extends Activity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		startActivity(new Intent(AccountPage.this, LoginPage.class));
+		startActivity(new Intent(AccountPage.this, MainPage.class));
 		finish();
 		return true;
 	}
