@@ -8,6 +8,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class BookInfoPage extends Activity {
+	String name, author, comment, course;
+	int edition;
+	double price;
+	Book obj;
+	Account account;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -15,6 +21,19 @@ public class BookInfoPage extends Activity {
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
+		obj = getIntent().getParcelableExtra("newBook");
+		name = obj.getName();
+		author = obj.getAuthor();
+		edition = obj.getEdition();
+		price = obj.getPrice();
+		comment = obj.getComment();
+		course = obj.getTag();
+		System.out.println("course"+course);
+		System.out.println("author"+author);
+		
+		//for going "back" to the account page
+		account = getIntent().getParcelableExtra("userAccount");
+		
 
 	}
 
@@ -27,7 +46,13 @@ public class BookInfoPage extends Activity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		startActivity(new Intent(BookInfoPage.this, MainPage.class));
+		//startActivity(new Intent(BookInfoPage.this, AccountPage.class));
+		Intent j = new Intent(
+				BookInfoPage.this,
+				AccountPage.class);
+		j.putExtra("newBook", obj);
+		j.putExtra("userAccount", account);
+		startActivity(j);
 		finish();
 		return true;
 	}

@@ -67,7 +67,7 @@ public class LoginPage extends Activity {
 							LoginPage.this,
 							MainPage.class);
 					//j.putExtra("email", userAccount.getEmail());
-					j.putExtra("userAcount", userAccount);
+					j.putExtra("userAccount", userAccount);
 					startActivity(j);
 				} else {
 					Toast toast = Toast.makeText(getApplicationContext(), "Please enter valid username and password", Toast.LENGTH_LONG);

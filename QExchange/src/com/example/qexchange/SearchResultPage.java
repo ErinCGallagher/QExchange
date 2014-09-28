@@ -1,32 +1,28 @@
 package com.example.qexchange;
 
 import java.sql.SQLException;
-import java.text.NumberFormat;
 import java.util.ArrayList;
-import java.util.Currency;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
 import android.os.Build;
 import android.os.Bundle;
-import android.app.Activity;
 import android.app.ListActivity;
-import android.app.SearchManager;
 import android.content.Context;
 import android.content.Intent;
-import android.content.Loader;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
 
-public class SearchResultPage extends ListActivity  {
+public class SearchResultPage extends ListActivity implements OnItemClickListener  {
 	
 	Connect database = new Connect();
 	String title,author,course, edition,price;
@@ -47,8 +43,6 @@ public class SearchResultPage extends ListActivity  {
 		searchInput = i.getStringExtra("search");
 		System.out.println("email from search"+emailInput);
 		System.out.println("email from search"+searchInput);
-
-		Book[] TempList = null; //placeholder
 
 		try {
 			queryBooks();
@@ -72,6 +66,13 @@ public class SearchResultPage extends ListActivity  {
 		}
 
 	}
+	
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		Book currentBook = BookList.get(position);
+		
+	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -80,16 +81,10 @@ public class SearchResultPage extends ListActivity  {
 		return true;
 	}
 
-	public void searchDatabase(String query){
-		//TODO
-	}
-
 	public void queryBooks()throws SQLException, InterruptedException, ExecutionException{
 		java.sql.ResultSet result =null;
 		String st = "SELECT * FROM Books WHERE course = ('"+searchInput+"')";
 		result = database.execute("SELECT",st).get();
-		//int email = result.findColumn("email");
-		//int password  = result.findColumn("password");
 		int title;
 		int author;
 		int edition;
@@ -117,23 +112,9 @@ public class SearchResultPage extends ListActivity  {
 		}
 	}
 
-	/*public void displayResults(String[] ResultSet){
-		title= ResultSet[0];
-		author= ResultSet[1];
-		edition= (String)ResultSet[2];
-		course = ResultSet[3];
-		price = (String)ResultSet[4];
-	}*/
-
-	public void displayResults(ArrayList<Book> list){
-
-	}
-
 	public class BookListAdapter extends BaseAdapter {
 
 		List<Book> bookList = BookList;
-		//List<Book> bookList = getDataForListView();
-
 
 		public int getCount(){
 			return bookList.size();
@@ -170,7 +151,7 @@ public class SearchResultPage extends ListActivity  {
 
 			bookTitle.setText(nextBook.getName());
 			bookAuthor.setText(nextBook.getAuthor());
-			bookPrice.setText(Double.toString(nextBook.getPrice()));
+			bookPrice.setText(String.format("$" + "%1$,.2f", nextBook.getPrice()));
 
 			return arg1;
 
@@ -182,31 +163,16 @@ public class SearchResultPage extends ListActivity  {
 
 	}
 	//End Class
-/*
-	public List<Book> getDataForListView(){
-
-		List<Book> BookList = new ArrayList<Book>();
-
-
-		BookList.add(new Book("Algorithms", "Dawes", 1, 199.99, "good","CISC365"));
-		BookList.add(new Book("Python", "Lamb", 1, 132.00, "good","CISC101"));
-		BookList.add(new Book("Logic", "Glasgow", 1, 75.00, "good","CISC204"));
-		BookList.add(new Book("Evil", "Dove", 1, 250.00, "good","CISC327"));
-		return BookList;
-
-	}
-*/
+	
 	public void launchMainPage(View view) {
 		Intent j = new Intent(
 				SearchResultPage.this,
 				MainPage.class);
     	startActivity(j);
 	}
-
+	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		//Bundle b = new Bundle();
-		//b.putSerializable(Constants.CUSTOM_LISTING,e1);
 		Intent j = new Intent(
 				SearchResultPage.this,
 				MainPage.class);
@@ -215,7 +181,6 @@ public class SearchResultPage extends ListActivity  {
 		finish();
 		return true;
 	}
-
 }
 
 

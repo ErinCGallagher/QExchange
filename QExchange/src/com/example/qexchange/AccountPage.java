@@ -34,6 +34,7 @@ public class AccountPage extends Activity implements OnItemClickListener{
 	int edition1;
 	double price1;
 	List<Book> BookList;
+	Account obj;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,28 +43,16 @@ public class AccountPage extends Activity implements OnItemClickListener{
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
-		Intent i = getIntent();
-		emailInput = i.getStringExtra("email");
-		System.out.println("email main from account"+emailInput);
-		/*
-		try {
-			queryTitles();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
+		obj = getIntent().getParcelableExtra("userAccount");
+		inputName = obj.getName();
+		emailInput = obj.getEmail();
+		System.out.println("email main"+emailInput);
+
 		//setting the title texts
 		emailText = (TextView)findViewById(R.id.textView3);
 		emailText.setText(emailInput);
-		//nameText = (TextView)findViewById(R.id.textView1);
-		//nameText.setText(inputName);
+		nameText = (TextView)findViewById(R.id.textView1);
+		nameText.setText(inputName);
 		
 
 		Book[] TempList = null; //placeholder
@@ -91,31 +80,16 @@ public class AccountPage extends Activity implements OnItemClickListener{
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		Book clickedBook = BookList.get(position);
+		Intent j = new Intent(
+				AccountPage.this,
+				BookInfoPage.class);
+		j.putExtra("newBook", clickedBook);
+		j.putExtra("userAccount", obj);
+		startActivity(j);
 		
 		
 	}
-	/*
-		
-		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
-	 * */
-	
-	public void queryTitles()throws SQLException, InterruptedException, ExecutionException{
-		java.sql.ResultSet result =null;
-		String st = "SELECT name FROM Accounts WHERE email = ('"+emailInput+"')";
-		result = database.execute("SELECT",st).get();
-		//int email = result.findColumn("email");
-		//int password  = result.findColumn("password");
-		int name;
-		name = result.findColumn("name");
-		while(result.next()) {
-			inputName = result.getString(name);
-			System.out.println("getName"+inputName);
 
-		}
-		result.close();
-	}
 	public void queryBooks()throws SQLException, InterruptedException, ExecutionException{
 		java.sql.ResultSet result =null;
 		String st = "SELECT * FROM Books WHERE userEmail = ('"+emailInput+"')";
@@ -148,27 +122,21 @@ public class AccountPage extends Activity implements OnItemClickListener{
 
 		}
 	}
-	
-	/*
-	public void queryBooks()throws SQLException, InterruptedException, ExecutionException{
-		java.sql.ResultSet result =null;
-		String st = "SELECT name FROM Books WHERE userID = ('"+emailInput+"')";
-		result = database.execute("SELECT",st).get();
-		//int email = result.findColumn("email");
-		//int password  = result.findColumn("password");
-		int name;
-		name = result.findColumn("name");
-		while(result.next()) {
-			inputName = result.getString(name);
-			System.out.println("getName"+inputName);
 
-		}
-	}
-	*/
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.account_page, menu);
+		return true;
+	}
+	
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent j = new Intent(
+				AccountPage.this,
+				MainPage.class);
+		j.putExtra("userAccount", obj);
+    	startActivity(j);
+		finish();
 		return true;
 	}
 	
@@ -230,55 +198,10 @@ public class AccountPage extends Activity implements OnItemClickListener{
 			j.putExtra("email", emailInput);
 			startActivity(j);
 	    }
-		public boolean onOptionsItemSelected(MenuItem item) {
-			//Bundle b = new Bundle();
-			//b.putSerializable(Constants.CUSTOM_LISTING,e1);
-			Intent j = new Intent(
-					AccountPage.this,
-					MainPage.class);
-			j.putExtra("email", emailInput);
-	    	startActivity(j);
-			finish();
-			return true;
-		}
+
 
 	}
-	//End Class
-/*
-	public List<Book> getDataForListView(){
 
-		List<Book> BookList = new ArrayList<Book>();
-
-
-		BookList.add(new Book("Algorithms", "Dawes", 1, 199.99, "good","CISC365"));
-		BookList.add(new Book("Python", "Lamb", 1, 132.00, "good","CISC101"));
-		BookList.add(new Book("Logic", "Glasgow", 1, 75.00, "good","CISC204"));
-		BookList.add(new Book("Evil", "Dove", 1, 250.00, "good","CISC327"));
-		return BookList;
-
-	}
-*/
-	/*
-	public void launchMainPage(View view) {
-		Intent j = new Intent(
-				SearchResultPage.this,
-				MainPage.class);
-    	startActivity(j);
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		//Bundle b = new Bundle();
-		//b.putSerializable(Constants.CUSTOM_LISTING,e1);
-		Intent j = new Intent(
-				SearchResultPage.this,
-				MainPage.class);
-		j.putExtra("email", emailInput);
-    	startActivity(j);
-		finish();
-		return true;
-	}
-	*/
 }
 
 
