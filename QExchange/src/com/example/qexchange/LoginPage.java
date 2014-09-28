@@ -62,6 +62,12 @@ public class LoginPage extends Activity {
 					String userName = results.getString("name");
 					userAccount = new Account(userEmail, userPassword, userName);
 					System.out.println("logged in");
+					System.out.println("get email"+userAccount.getEmail());
+					Intent j = new Intent(
+							LoginPage.this,
+							MainPage.class);
+					j.putExtra("email", userAccount.getEmail());
+					startActivity(j);
 				} else {
 					Toast toast = Toast.makeText(getApplicationContext(), "Please enter valid username and password", Toast.LENGTH_LONG);
 					toast.show();
