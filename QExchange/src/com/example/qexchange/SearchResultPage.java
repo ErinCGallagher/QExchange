@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 
@@ -24,16 +25,17 @@ public class SearchResultPage extends ListActivity  {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_search_result_page);
-
-			Intent intent = getIntent();
-			if (Intent.ACTION_SEARCH.equals(intent.getAction())){
-				String query = intent.getStringExtra(SearchManager.QUERY);
-	//			searchDatabase(query); TODO
-//				displayResults(ResultSet) TODO
-			}
-	}
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_search_result_page);
+        
+        String[] codeLearnChapters = new String[] { "Android Introduction","Android Setup/Installation","Android Hello World",
+        		"Android Layouts/Viewgroups","Android Activity & Lifecycle","Intents in Android"};
+        
+        ArrayAdapter<String> codeLearnArrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, codeLearnChapters);
+        
+        ListView codeLearnLessons = (ListView)findViewById(R.id.listView1);
+        codeLearnLessons.setAdapter(codeLearnArrayAdapter);
+    }
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
