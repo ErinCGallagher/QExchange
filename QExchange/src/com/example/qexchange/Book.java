@@ -2,6 +2,7 @@ package com.example.qexchange;
 
 public class Book {
 	private String name;
+	private String author;
 	private int edition;
 	private double price;
 	private String tag;
@@ -9,13 +10,14 @@ public class Book {
 		
 		public Book(){
 			name = " ";
+			author = " ";
 			edition = 1;
 			price = 0;
 			tag = " ";
 			
 		}
 		
-		public Book(String name, int edition, double price, String tag){
+		public Book(String name, String author, int edition, double price, String tag){
 			this.name = name;
 			this.edition = edition;
 			this.price = price;
@@ -24,6 +26,9 @@ public class Book {
 
 		public String getName(){
 			return name;
+		}
+		public String getAuthor(){
+			return author;
 		}
 		public int getEdition(){
 			return edition;
@@ -39,6 +44,9 @@ public class Book {
 		
 		public void setName(String name){
 			this.name = name;
+		}
+		public void setauthor(String author){
+			this.author = author;
 		}
 		
 		public void setEdition(int edition){

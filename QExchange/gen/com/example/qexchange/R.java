@@ -28,12 +28,11 @@ public final class R {
         public static final int LinearLayout2=0x7f080015;
         public static final int RelativeLayout1=0x7f080016;
         public static final int account=0x7f08000e;
-        public static final int action_settings=0x7f08001f;
+        public static final int action_settings=0x7f08001e;
         public static final int addBook=0x7f080005;
         public static final int button2=0x7f080014;
         public static final int confirmPassField=0x7f08000b;
         public static final int createAccountButton=0x7f080018;
-        public static final int deleteBook=0x7f08001e;
         public static final int editText5=0x7f08000a;
         public static final int emailField=0x7f08000d;
         public static final int imageView1=0x7f08000f;
@@ -65,7 +64,6 @@ public final class R {
         public static final int activity_login_page=0x7f030004;
         public static final int activity_main_page=0x7f030005;
         public static final int activity_search_result_page=0x7f030006;
-        public static final int activity_seller_book_info_page=0x7f030007;
     }
     public static final class menu {
         public static final int account_page=0x7f070000;

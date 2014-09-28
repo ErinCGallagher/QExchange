@@ -105,7 +105,7 @@
         android:layout_alignRight="@+id/newPassField"
         android:layout_below="@+id/textView4"
         android:ems="10"
-        android:inputType="numberDecimal" />
+        android:inputType="number" />
 
     <Button
         android:id="@+id/account"
