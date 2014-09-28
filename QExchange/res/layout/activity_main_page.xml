@@ -51,10 +51,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/listView1"
-        android:layout_alignRight="@+id/button1"
+        android:layout_alignRight="@+id/listView1"
         android:layout_below="@+id/button1"
-        android:text="News Feed"
+        android:layout_marginTop="14dp"
         android:gravity="center"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:text="News Feed"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:textSize="24sp" />
 
 </RelativeLayout>
