@@ -70,7 +70,8 @@
             android:layout_marginBottom="30dp"
             android:ems="10"
             android:gravity="center"
-            android:hint="@string/userHint" />
+            android:hint="@string/userHint"
+            android:inputType="text" />
 
         <ImageView
             android:id="@+id/imageView1"
