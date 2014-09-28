@@ -8,113 +8,139 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".AddBookPage" >
 
-    <TextView
-        android:id="@+id/textView1"
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/account"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:text="Title"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/nameField"
-        android:layout_below="@+id/nameField"
-        android:layout_marginTop="15dp"
-        android:text="Author"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
-
-    <EditText
-        android:id="@+id/newPassField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView2"
-        android:layout_alignRight="@+id/nameField"
-        android:layout_below="@+id/textView2"
-        android:ems="10" />
-
-    <EditText
-        android:id="@+id/nameField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/textView1"
-        android:ems="10" >
+        android:layout_alignParentTop="true" >
 
-        <requestFocus />
-    </EditText>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/newPassField"
-        android:layout_below="@+id/newPassField"
-        android:layout_marginTop="15dp"
-        android:text="Edition"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Title"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
-        android:id="@+id/editText5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView5"
-        android:layout_alignRight="@+id/newPassField"
-        android:layout_below="@+id/textView5"
-        android:ems="10"
-        android:inputType="number" />
+            <EditText
+                android:id="@+id/nameField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ems="10" />
 
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/editText5"
-        android:layout_below="@+id/editText5"
-        android:layout_marginTop="16dp"
-        android:text="Course Code"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/nameField"
+                android:layout_below="@+id/nameField"
+                android:layout_marginTop="15dp"
+                android:text="Author"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
-        android:id="@+id/confirmPassField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignRight="@+id/newPassField"
-        android:layout_below="@+id/textView3"
-        android:ems="10" />
+            <EditText
+                android:id="@+id/newPassField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView2"
+                android:layout_alignRight="@+id/nameField"
+                android:layout_below="@+id/textView2"
+                android:ems="10" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/confirmPassField"
-        android:layout_below="@+id/confirmPassField"
-        android:layout_marginTop="15dp"
-        android:text="Price"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+            <TextView
+                android:id="@+id/textView5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/newPassField"
+                android:layout_below="@+id/newPassField"
+                android:layout_marginTop="15dp"
+                android:text="Edition"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <EditText
-        android:id="@+id/emailField"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
-        android:layout_alignRight="@+id/newPassField"
-        android:layout_below="@+id/textView4"
-        android:ems="10"
-        android:inputType="numberDecimal" />
+            <EditText
+                android:id="@+id/editText5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView5"
+                android:layout_alignRight="@+id/newPassField"
+                android:layout_below="@+id/textView5"
+                android:ems="10"
+                android:inputType="number" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/editText5"
+                android:layout_below="@+id/editText5"
+                android:layout_marginTop="16dp"
+                android:text="Course Code"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/confirmPassField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView3"
+                android:layout_alignRight="@+id/newPassField"
+                android:layout_below="@+id/textView3"
+                android:ems="10" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/confirmPassField"
+                android:layout_below="@+id/confirmPassField"
+                android:layout_marginTop="15dp"
+                android:text="Price"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/emailField"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/textView4"
+                android:layout_alignRight="@+id/newPassField"
+                android:layout_below="@+id/textView4"
+                android:ems="10"
+                android:inputType="numberDecimal" />
+
+            <TextView
+                android:id="@+id/TextView01"
+                android:layout_width="fill_parent"
+                android:layout_height="0dip"
+                android:layout_weight="1"
+                android:gravity="center_vertical"
+                android:text="Comment"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textMultiLine" />
+
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:id="@+id/account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/emailField"
-        android:layout_alignRight="@+id/emailField"
-        android:layout_below="@+id/emailField"
-        android:layout_marginTop="19dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
         android:onClick="submitBook"
         android:text="Submit" />
 
