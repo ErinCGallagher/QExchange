@@ -17,11 +17,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class AccountPage extends Activity {
+public class AccountPage extends Activity implements OnItemClickListener{
 	String emailInput, inputName;
 	Connect database = new Connect();
 	TextView nameText, emailText;
@@ -82,7 +84,15 @@ public class AccountPage extends Activity {
 
 		BookListAdapter bookAdapter = new BookListAdapter();
 		ListView bookList = (ListView)findViewById(R.id.listView1);
+		bookList.setOnItemClickListener(this);
 		bookList.setAdapter(bookAdapter);
+	}
+	@Override
+	public void onItemClick(AdapterView<?> parent, View view, int position,
+			long id) {
+		Book clickedBook = BookList.get(position);
+		
+		
 	}
 	/*
 		
