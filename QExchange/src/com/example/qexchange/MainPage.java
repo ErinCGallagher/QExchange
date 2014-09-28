@@ -20,6 +20,8 @@ public class MainPage extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_page);
 		Intent i = getIntent();
+		//emailInput = i.getStringExtra("email");
+		//System.out.println("email main"+emailInput);
 		obj = getIntent().getParcelableExtra("userAcount");
 		name = obj.getName();
 		emailInput = obj.getEmail();
@@ -37,13 +39,16 @@ public class MainPage extends Activity {
 		Intent j = new Intent(
 				MainPage.this,
 				AccountPage.class);
+		//j.putExtra("email", emailInput);
 		j.putExtra("userAcount", obj);
 		startActivity(j);
+    	//startActivity(new Intent(MainPage.this, AccountPage.class));
     }
 	
 	public void launchSearchPage(View view){
 		searchInput = (SearchView)findViewById(R.id.searchView1);
-		searchResults =searchInput.getQuery().toString();
+		searchResults =searchInput.getQuery().toString().trim();
+		searchResults = searchResults.replaceAll("\\s","");
 		Intent j = new Intent(
 				MainPage.this,
 				SearchResultPage.class);
