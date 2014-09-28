@@ -32,7 +32,7 @@ public class MainPage extends Activity {
 	Connect database = new Connect();
 	String title,author,course, edition,price;
 	BookListAdapter BookAdapter;
-	String title1, author1, comment1,course1;
+	String title1, author1, comment1,course1, email1;
 	int edition1;
 	double price1;
 	List<Book> BookList;
@@ -68,12 +68,14 @@ public class MainPage extends Activity {
 		int price;
 		int comment;
 		int course;
+		int email;
 		title = result.findColumn("title");
 		author = result.findColumn("author");
 		edition = result.findColumn("edition");
 		price = result.findColumn("price");
 		comment = result.findColumn("comment");
 		course = result.findColumn("course");
+		email = result.findColumn("userEmail");
 		BookList = new ArrayList<Book>();
 		while(result.next()) {
 			title1 = result.getString(title);
@@ -82,9 +84,10 @@ public class MainPage extends Activity {
 			price1 = result.getDouble(price);
 			comment1 = result.getString(comment);
 			course1 = result.getString(course);
+			email1 = result.getString(email);
 			System.out.println("getName"+title1);
 			System.out.println("getEdition"+edition1);
-			BookList.add(new Book(title1,author1,edition1,price1,comment1,course1));
+			BookList.add(new Book(title1,author1,edition1,price1,comment1,course1, email1));
 
 		}
 	}
@@ -164,7 +167,8 @@ public class MainPage extends Activity {
 			queryBooks();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			Toast toast = Toast.makeText(getApplicationContext(), "Database connection failed. Please try again!", Toast.LENGTH_SHORT);
+			toast.show();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

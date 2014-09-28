@@ -34,6 +34,18 @@ public class BookInfoPage extends Activity {
 		
 		TextView emailText = (TextView)findViewById(R.id.emailText);
 		emailText.setText(email);
+		TextView titleText = (TextView)findViewById(R.id.titleText);
+		titleText.setText(name);
+		TextView authorText = (TextView)findViewById(R.id.authorText);
+		authorText.setText(author);
+		TextView editionText = (TextView)findViewById(R.id.editionText);
+		editionText.setText(Integer.toString(edition));
+		TextView priceText = (TextView)findViewById(R.id.priceText);
+		priceText.setText(Double.toString(price));
+		TextView courseText = (TextView)findViewById(R.id.courseText);
+	    courseText.setText(course);
+		
+		
 		
 		//for going "back" to the account page
 		account = getIntent().getParcelableExtra("userAccount");
