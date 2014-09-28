@@ -41,7 +41,7 @@ public class MainPage extends Activity {
 	
 	public void launchSearchPage(View view){
 		searchInput = (SearchView)findViewById(R.id.searchView1);
-		searchResults = searchInput.toString();
+		searchResults =searchInput.getQuery().toString();
     	//startActivity(new Intent(MainPage.this, SearchResultPage.class));
 		Intent j = new Intent(
 				MainPage.this,
