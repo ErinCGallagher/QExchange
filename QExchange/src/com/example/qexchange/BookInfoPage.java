@@ -8,7 +8,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class BookInfoPage extends Activity {
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -16,6 +15,7 @@ public class BookInfoPage extends Activity {
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
+
 	}
 
 	@Override

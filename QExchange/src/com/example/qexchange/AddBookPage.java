@@ -6,6 +6,8 @@ import java.util.concurrent.ExecutionException;
 
 
 
+
+
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
@@ -17,7 +19,7 @@ import android.widget.EditText;
 
 public class AddBookPage extends Activity {
 	Connect database = new Connect();
-
+	String emailInput, inputName;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -26,6 +28,9 @@ public class AddBookPage extends Activity {
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
+		Intent i = getIntent();
+		emailInput = i.getStringExtra("email");
+		System.out.println("email from addBookPage "+emailInput);
 		/*
 		try {
 			query();
@@ -104,17 +109,15 @@ public class AddBookPage extends Activity {
 
 	public void query() throws SQLException, InterruptedException, ExecutionException {
 		java.sql.ResultSet result =null;
-		String st = "SELECT * FROM Accounts";
+		String st = "SELECT name FROM Accounts WHERE email = ('"+emailInput+"')";
 		result = database.execute("SELECT",st).get();
-		System.out.println("after but in try");
-		System.out.println("after");
-		//int id   = result.findColumn("ID");
-		//int email    = result.findColumn("email");
+		//int email = result.findColumn("email");
 		//int password  = result.findColumn("password");
 		int name;
 		name = result.findColumn("name");
 		while(result.next()) {
-			System.out.println(result.getString(name));
+			inputName = result.getString(name);
+			System.out.println("getName"+inputName);
 
 		}
 	}

@@ -10,7 +10,6 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class AccountPage extends Activity {
@@ -28,7 +27,7 @@ public class AccountPage extends Activity {
 		emailInput = i.getStringExtra("email");
 		System.out.println("email main from account"+emailInput);
 		try {
-			query();
+			queryTitles();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,6 +38,7 @@ public class AccountPage extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		//setting the title texts
 		emailText = (TextView)findViewById(R.id.textView3);
 		emailText.setText(emailInput);
 		nameText = (TextView)findViewById(R.id.textView1);
@@ -46,9 +46,24 @@ public class AccountPage extends Activity {
 		
 	}
 	
-	public void query()throws SQLException, InterruptedException, ExecutionException{
+	public void queryTitles()throws SQLException, InterruptedException, ExecutionException{
 		java.sql.ResultSet result =null;
 		String st = "SELECT name FROM Accounts WHERE email = ('"+emailInput+"')";
+		result = database.execute("SELECT",st).get();
+		//int email = result.findColumn("email");
+		//int password  = result.findColumn("password");
+		int name;
+		name = result.findColumn("name");
+		while(result.next()) {
+			inputName = result.getString(name);
+			System.out.println("getName"+inputName);
+
+		}
+	}
+	
+	public void queryBooks()throws SQLException, InterruptedException, ExecutionException{
+		java.sql.ResultSet result =null;
+		String st = "SELECT name FROM Books WHERE userID = ('"+emailInput+"')";
 		result = database.execute("SELECT",st).get();
 		//int email = result.findColumn("email");
 		//int password  = result.findColumn("password");
@@ -76,7 +91,12 @@ public class AccountPage extends Activity {
 	}
 	
 	public void launchAddBookPage(View view){
-		startActivity(new Intent(AccountPage.this, AddBookPage.class));
+		//startActivity(new Intent(AccountPage.this, AddBookPage.class));
+		Intent j = new Intent(
+				AccountPage.this,
+				AddBookPage.class);
+		j.putExtra("email", emailInput);
+		startActivity(j);
     }
 
 }
