@@ -16,37 +16,38 @@
         
         android:src="@drawable/ic_launcher"
         />
-    
-    <TextView android:id="@+id/listingName"
+
+    <TextView
+        android:id="@+id/listingAuthor"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_marginLeft="23dp"
-        android:layout_marginTop="10dp"
-        android:layout_toRightOf="@+id/listingIcon"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageView2"
+        android:layout_toRightOf="@+id/imageView2"
+        android:paddingTop="4dp"
+        android:text="AUTHOR NAME"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/listingPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/listingAuthor"
+        android:layout_alignBottom="@+id/listingAuthor"
         android:layout_alignParentRight="true"
+        android:paddingRight="8dp"
+        android:text="LISTING PRICE"
+        android:textColor="@color/priceColor"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/listingName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/listingAuthor"
+        android:layout_alignParentTop="true"
+        android:paddingTop="8dp"
         android:text="BOOK NAME"
         android:textSize="14sp" />
-    
-    <TextView android:id="@+id/listingAuthor"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_alignBottom="@+id/listingIcon"
-        android:layout_alignLeft="@+id/listingName"
-        android:text="AUTHOR NAME"
-		android:textSize="14sp"/>
-    
-    
-    <TextView android:id="@+id/listingPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:layout_marginRight="10dp"
-        android:layout_alignBottom="@+id/listingIcon"
-        android:layout_alignParentRight="true"
-        android:text="LISTING PRICE" 
-        android:textSize="14sp"
-        android:textColor="@color/priceColor"
-        android:textStyle="bold"
-        />
-        
 
 </RelativeLayout>
