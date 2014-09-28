@@ -46,7 +46,7 @@ public class AddBookPage extends Activity {
 	public void submitBook (View v){
 		String title, author, courseCode;
 		int edition; 
-		int price;
+		double price;
 		
 		EditText editTitle = (EditText) findViewById(R.id.nameField);
 		title = isTextValid(editTitle);
@@ -57,7 +57,7 @@ public class AddBookPage extends Activity {
 		EditText editCourseCode = (EditText) findViewById(R.id.confirmPassField);
 		courseCode = isTextValid(editCourseCode);
 		EditText editPrice = (EditText) findViewById(R.id.emailField);
-		price = isIntValid(editPrice);		
+		price = isDoubleValid(editPrice);		
 
 		//all input if correct; add to database
 		if (!title.equals("retry") && !author.equals("retry")  && edition!=0 && !courseCode.equals("retry") && price != 0 ){
