@@ -5,6 +5,7 @@ import java.util.concurrent.ExecutionException;
 
 import android.os.Build;
 import android.os.Bundle;
+import android.provider.SyncStateContract.Constants;
 import android.app.Activity;
 import android.content.Intent;
 import android.support.v4.app.NavUtils;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 public class CreateAccountPage extends Activity {
 
 	EditText nameField, passwordField, confirmField, emailField;
+	Account e1 = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -62,7 +64,7 @@ public class CreateAccountPage extends Activity {
 		emailInput = isTextValid(emailField);
 		System.out.println("emailInput"+ emailInput);
 		if (!nameInput.equals("retry") && !emailInput.equals("retry") && !passwordInput.equals("retry") && correctPass){
-			Account e1 = new Account(emailInput, passwordInput, nameInput);
+			e1 = new Account(emailInput, passwordInput, nameInput);
 			check(e1);
 		}
 
@@ -76,7 +78,13 @@ public class CreateAccountPage extends Activity {
 				} else {
 					String query = "INSERT INTO Accounts (email, password, name) VALUES ('"+e1.getEmail()+"','"+e1.getPassword()+"','"+e1.getName()+"')";
 					Query.query("INSERT", query);
-					startActivity(new Intent(CreateAccountPage.this, MainPage.class));
+					System.out.println("get email"+e1.getEmail());
+					Intent j = new Intent(
+							CreateAccountPage.this,
+							MainPage.class);
+					j.putExtra("email", e1.getEmail());
+					startActivity(j);
+					//startActivity(new Intent(CreateAccountPage.this, MainPage.class));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -112,7 +120,12 @@ public class CreateAccountPage extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		startActivity(new Intent(CreateAccountPage.this, LoginPage.class));
+		//Bundle b = new Bundle();
+		//b.putSerializable(Constants.CUSTOM_LISTING,e1);
+		Intent j = new Intent(
+				CreateAccountPage.this,
+				LoginPage.class);
+    	startActivity(j);
 		finish();
 		return true;
 	}

@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class AccountPage extends Activity {
-
+	String emailInput;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -17,6 +17,9 @@ public class AccountPage extends Activity {
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
+		Intent i = getIntent();
+		emailInput = i.getStringExtra("email");
+		System.out.println("email main from account"+emailInput);
 	}
 
 	@Override

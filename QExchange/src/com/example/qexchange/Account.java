@@ -6,8 +6,8 @@ public class Account {
 	private String password;
 	private String name;
 	
-	public Account(String username, String password) {
-		this(username, password, "Jon Snow");
+	public Account(String email, String password) {
+		this(email, password, "Jon Snow");
 	}
 	
 	public Account(String email, String password, String name) {

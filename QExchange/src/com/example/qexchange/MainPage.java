@@ -8,11 +8,15 @@ import android.view.View;
 import android.widget.Toast;
 
 public class MainPage extends Activity {
+	private String emailInput;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_page);
+		Intent i = getIntent();
+		emailInput = i.getStringExtra("email");
+		System.out.println("email main"+emailInput);
 	}
 
 	@Override
@@ -23,7 +27,12 @@ public class MainPage extends Activity {
 	}
 	
 	public void launchAccountPage(View view){
-    	startActivity(new Intent(MainPage.this, AccountPage.class));
+		Intent j = new Intent(
+				MainPage.this,
+				AccountPage.class);
+		j.putExtra("email", emailInput);
+		startActivity(j);
+    	//startActivity(new Intent(MainPage.this, AccountPage.class));
     }
 	
 	public void launchSearchPage(View view){
