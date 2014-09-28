@@ -50,10 +50,10 @@ public final class R {
         public static final int linearLayout1=0x7f0a0017;
         public static final int linearLayout2=0x7f0a001f;
         public static final int listView1=0x7f0a0006;
-        public static final int listingAuthor=0x7f0a0025;
+        public static final int listingAuthor=0x7f0a0026;
         public static final int listingContainer=0x7f0a0004;
         public static final int listingName=0x7f0a0027;
-        public static final int listingPrice=0x7f0a0026;
+        public static final int listingPrice=0x7f0a0025;
         public static final int loginScrollView=0x7f0a0019;
         public static final int myBooks=0x7f0a0000;
         public static final int nameField=0x7f0a0009;
