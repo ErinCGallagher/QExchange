@@ -18,7 +18,7 @@ import android.widget.Toast;
 public class CreateAccountPage extends Activity {
 
 	EditText nameField, passwordField, confirmField, emailField;
-	Account e1 = null;
+	Account userAccount = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -71,8 +71,8 @@ public class CreateAccountPage extends Activity {
 		}
 		correctPass = doPasswordsMatch(passwordInput, confirmPass);
 		if (!nameInput.equals("retry") && !emailInput.equals("retry") && !passwordInput.equals("retry") && correctPass){
-			e1 = new Account(emailInput, passwordInput, nameInput);
-			check(e1);
+			userAccount = new Account(emailInput, passwordInput, nameInput);
+			check(userAccount);
 		}
 
 	}
@@ -89,7 +89,8 @@ public class CreateAccountPage extends Activity {
 					Intent j = new Intent(
 							CreateAccountPage.this,
 							MainPage.class);
-					j.putExtra("email", e1.getEmail());
+					//j.putExtra("email", e1.getEmail());
+					j.putExtra("userAcount", userAccount);
 					startActivity(j);
 					//startActivity(new Intent(CreateAccountPage.this, MainPage.class));
 				}
