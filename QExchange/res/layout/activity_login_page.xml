@@ -84,7 +84,7 @@
                 android:ems="10"
                 android:gravity="center"
                 android:hint="@string/userHint"
-                android:inputType="text" >
+                android:inputType="textVisiblePassword" >
 
                 <requestFocus />
             </EditText>
