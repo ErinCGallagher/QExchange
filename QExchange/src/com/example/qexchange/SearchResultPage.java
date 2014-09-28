@@ -70,7 +70,7 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		Book currentBook = BookList.get(position);
 		Intent j = new Intent(
 				SearchResultPage.this,
-				BookInfoPage.class);
+				BookInfoMain.class);
 		j.putExtra("newBook", currentBook);
 		j.putExtra("userAccount", obj);
 		startActivity(j);
