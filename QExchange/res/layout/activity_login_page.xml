@@ -24,27 +24,6 @@
             tools:context=".LoginPage" >
 
             <LinearLayout
-                android:id="@+id/LinearLayout2"
-                android:layout_width="fill_parent"
-                android:layout_height="200dp"
-                android:layout_alignLeft="@+id/RelativeLayout1"
-                android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:paddingBottom="60dp" >
-
-                <Button
-                    android:id="@+id/sumbitButton"
-                    android:layout_width="150dip"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="0"
-                    android:gravity="center_vertical|center_horizontal"
-                    android:onClick="submitLogin"
-                    android:text="@+string/submitPrompt" />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/linearLayout2"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -55,41 +34,6 @@
                 android:orientation="vertical"
                 android:paddingTop="30dp" >
             </LinearLayout>
-
-            <EditText
-                android:id="@+id/passField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/LinearLayout2"
-                android:layout_alignLeft="@+id/linearLayout2"
-                android:layout_centerVertical="true"
-                android:gravity="center"
-                android:ems="10"
-                android:hint="@+string/passHint"
-                android:inputType="textPassword" />
-
-            <EditText
-                android:id="@+id/userField"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/passField"
-                android:layout_alignLeft="@+id/passField"
-                android:layout_marginBottom="28dp"
-                android:ems="10"
-                android:gravity="center"
-                android:hint="@string/userHint"
-                android:inputType="textVisiblePassword" >
-
-                <requestFocus />
-            </EditText>
-
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/linearLayout2"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/logo1" />
 
             <Button
                 android:id="@+id/createAccountButton"
@@ -103,7 +47,60 @@
                 android:text="@+string/createAccountPrompt"
                 android:textColor="@color/blueText" />
 
+            <EditText
+                android:id="@+id/userField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_above="@+id/LinearLayout2"
+                android:layout_alignLeft="@+id/passField"
+                android:layout_alignRight="@+id/passField"
+                android:layout_centerVertical="true"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@string/userHint"
+                android:inputType="textVisiblePassword" />
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_above="@+id/userField"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="35dp"
+                android:layout_marginRight="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginBottom="35dp"
+                android:src="@drawable/logo1" />
+
+            <EditText
+                android:id="@+id/passField"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/button1"
+                android:layout_alignRight="@+id/button1"
+                android:layout_below="@+id/userField"
+                android:layout_marginTop="15dp"
+                android:layout_weight="0"
+                android:ems="10"
+                android:gravity="center"
+                android:hint="@+string/passHint"
+                android:inputType="textPassword" />
+
+            <Button
+                android:id="@+id/button1"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/linearLayout2"
+                android:layout_alignRight="@+id/linearLayout2"
+                android:layout_below="@+id/passField"
+                android:layout_marginTop="15dp"
+                android:onClick="submitLogin"
+                android:text="@+string/submitPrompt" />
+
         </RelativeLayout>
+
     </LinearLayout>
 
 </ScrollView>
