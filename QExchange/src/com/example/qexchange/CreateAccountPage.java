@@ -1,5 +1,8 @@
 package com.example.qexchange;
 
+import java.sql.SQLException;
+import java.util.concurrent.ExecutionException;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
@@ -12,7 +15,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class CreateAccountPage extends Activity {
-	
+
 	EditText nameField, passwordField, confirmField, emailField;
 
 	@Override
@@ -34,22 +37,46 @@ public class CreateAccountPage extends Activity {
 		getMenuInflater().inflate(R.menu.create_account, menu);
 		return true;
 	}
-	
+
 	public void launchLoginPage(View view){
-    	startActivity(new Intent(CreateAccountPage.this, LoginPage.class));
-    }
-	
+		startActivity(new Intent(CreateAccountPage.this, LoginPage.class));
+	}
+
 	public void createNewAccount(View view){
-		if (!passwordField.getText().toString().equals(confirmField.getText().toString())){
+		String emailInput = emailField.getText().toString();
+		String passwordInput = passwordField.getText().toString();
+		String nameInput = nameField.getText().toString();
+		if (!passwordInput.equals(confirmField.getText().toString())){
 			Toast toast = Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_LONG);
+			toast.show();
+		} else if (passwordInput.length() < 5) {
+			Toast toast = Toast.makeText(getApplicationContext(), "Passwords must be at least 5 characters", Toast.LENGTH_LONG);
+			toast.show();
+		} else if (nameInput.length() <= 0) {
+			Toast toast = Toast.makeText(getApplicationContext(), "Please enter a valid name", Toast.LENGTH_LONG);
 			toast.show();
 		} else {
 			//create account: add appropriate info to tables, check that email not already there
-			startActivity(new Intent(CreateAccountPage.this, MainPage.class));
+			try {
+				if (Query.CheckEmailExists(emailInput)) {
+					Toast toast = Toast.makeText(getApplicationContext(), "Email already in use!", Toast.LENGTH_LONG);
+					toast.show();
+				} else {
+					String query = "INSERT INTO Accounts (email, password, name) VALUES ('"+emailInput+"','"+passwordInput+"','"+nameInput+"')";
+					Query.query("INSERT", query);
+					startActivity(new Intent(CreateAccountPage.this, MainPage.class));
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				e.printStackTrace();
+			}
 		}
-    	
-    }
-	
+
+	}
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		startActivity(new Intent(CreateAccountPage.this, LoginPage.class));

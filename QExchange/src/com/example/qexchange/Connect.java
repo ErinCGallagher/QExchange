@@ -23,36 +23,28 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 	Connection conn;
 
 	@Override
-	protected ResultSet doInBackground(String... arg0) {
+	protected ResultSet doInBackground(String... arg0) throws SQLException {
 		ResultSet results = null;
 		Connection response = null;
 		try {
 			response = getConnection();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (java.sql.SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}	
 		this.conn = response;
-		//String st = "(ID, email, password, name) values ('4','fog','test','mac')";
 		if (arg0[0].equals("INSERT")){
 			sqlInsertExecution(arg0[1]);
 		}
 		else{
 			results = sqlSelectionExecution(arg0[1]);
-			System.out.println("after but in try.....rgae");
-			return results;
 		}
 		return results;	
 	}
@@ -81,12 +73,12 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 		return conn;
 	}
 
-	public  void sqlInsertExecution(String arg0){
+	public void sqlInsertExecution(String arg0){
 		PreparedStatement stmt;
+		ResultSet results = null;
 		try {
 			stmt = conn.prepareStatement(arg0);
-
-			stmt.execute();
+			stmt.executeUpdate();
 		} catch (java.sql.SQLException e) {
 			e.printStackTrace();
 		}
