@@ -10,6 +10,7 @@ import java.util.concurrent.ExecutionException;
 
 
 
+
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
@@ -22,6 +23,8 @@ import android.widget.EditText;
 public class AddBookPage extends Activity {
 	Connect database = new Connect();
 	String emailInput, inputName;
+	Account obj;
+	String emailGet;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -30,9 +33,8 @@ public class AddBookPage extends Activity {
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
-		Intent i = getIntent();
-		emailInput = i.getStringExtra("email");
-		System.out.println("email from addBookPage "+emailInput);
+		obj = getIntent().getParcelableExtra("userAccount");
+		emailInput = obj.getEmail();
 	}
 
 	public void submitBook (View v){
@@ -95,7 +97,8 @@ public class AddBookPage extends Activity {
 			Intent j = new Intent(
 					AddBookPage.this,
 					AccountPage.class);
-			j.putExtra("email", emailInput);
+			j.putExtra("userAccount", obj);
+	    	startActivity(j);
 			startActivity(j);
 		}
 	}
@@ -163,7 +166,7 @@ public class AddBookPage extends Activity {
 		Intent j = new Intent(
 				AddBookPage.this,
 				AccountPage.class);
-		j.putExtra("email", emailInput);
+		j.putExtra("userAccount", obj);
     	startActivity(j);
 		finish();
 		return true;

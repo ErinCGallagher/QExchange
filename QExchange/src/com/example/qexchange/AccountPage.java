@@ -142,6 +142,15 @@ public class AccountPage extends Activity implements OnItemClickListener{
 		return true;
 	}
 	
+	public void launchAddBookPage(View view){
+		//startActivity(new Intent(AccountPage.this, AddBookPage.class));
+		Intent j = new Intent(
+				AccountPage.this,
+				AddBookPage.class);
+		j.putExtra("userAccount", obj);
+		startActivity(j);
+    }
+	
 	
 	public class BookListAdapter extends BaseAdapter {
 
@@ -182,8 +191,7 @@ public class AccountPage extends Activity implements OnItemClickListener{
 
 			bookTitle.setText(nextBook.getName());
 			bookAuthor.setText(nextBook.getAuthor());
-			bookPrice.setText(Double.toString(nextBook.getPrice()));
-
+			bookPrice.setText(String.format("$" + "%1$,.2f", nextBook.getPrice()));
 			return arg1;
 
 		}
@@ -192,14 +200,6 @@ public class AccountPage extends Activity implements OnItemClickListener{
 			return bookList.get(position);
 		}
 		
-		public void launchAddBookPage(View view){
-			//startActivity(new Intent(AccountPage.this, AddBookPage.class));
-			Intent j = new Intent(
-					AccountPage.this,
-					AddBookPage.class);
-			j.putExtra("email", emailInput);
-			startActivity(j);
-	    }
 
 
 	}
