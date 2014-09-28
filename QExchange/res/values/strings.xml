@@ -4,12 +4,12 @@
     <string name="app_name">QExchange</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
-    <string name="title_activity_create_account">CreateAccount</string>
-    <string name="title_activity_book_page">BookPage</string>
-    <string name="title_activity_main_page">MainPage</string>
-    <string name="title_activity_account_page">AccountPage</string>
-    <string name="title_activity_book_info_page">BookInfoPage</string>
-    <string name="title_activity_search_result_page">SearchResultPage</string>
+    <string name="title_activity_create_account">Create Account</string>
+    <string name="title_activity_book_page">Add Book</string>
+    <string name="title_activity_main_page">QExchange</string>
+    <string name="title_activity_account_page">Account Details</string>
+    <string name="title_activity_book_info_page">Book Details</string>
+    <string name="title_activity_search_result_page">Search Results</string>
     <string name="userPrompt">Username:</string>
     <string name="submitPrompt">Submit</string>
     <string name="passPrompt">Password:</string>
@@ -17,6 +17,6 @@
     <string name="passHint">Password</string>
     <string name="userHint">Username</string>
     <string name="app_label">QExchange</string>
-    <string name="title_activity_book_info_main_page">BookInfoMainPage</string>
+    <string name="title_activity_book_info_main_page">Book Details</string>
 
 </resources>
