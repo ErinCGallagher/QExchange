@@ -206,6 +206,7 @@ public class SearchResultPage extends ListActivity  {
 		Intent j = new Intent(
 				SearchResultPage.this,
 				MainPage.class);
+		j.putExtra("email", emailInput);
     	startActivity(j);
 		finish();
 		return true;

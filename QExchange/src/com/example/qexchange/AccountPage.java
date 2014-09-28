@@ -83,13 +83,6 @@ public class AccountPage extends Activity {
 		return true;
 	}
 	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		startActivity(new Intent(AccountPage.this, MainPage.class));
-		finish();
-		return true;
-	}
-	
 	public void launchAddBookPage(View view){
 		//startActivity(new Intent(AccountPage.this, AddBookPage.class));
 		Intent j = new Intent(
@@ -98,5 +91,17 @@ public class AccountPage extends Activity {
 		j.putExtra("email", emailInput);
 		startActivity(j);
     }
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		//Bundle b = new Bundle();
+		//b.putSerializable(Constants.CUSTOM_LISTING,e1);
+		Intent j = new Intent(
+				AccountPage.this,
+				MainPage.class);
+		j.putExtra("email", emailInput);
+    	startActivity(j);
+		finish();
+		return true;
+	}
 
 }

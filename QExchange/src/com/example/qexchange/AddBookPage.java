@@ -8,6 +8,8 @@ import java.util.concurrent.ExecutionException;
 
 
 
+
+
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
@@ -64,6 +66,11 @@ public class AddBookPage extends Activity {
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			}
+			Intent j = new Intent(
+					AddBookPage.this,
+					AccountPage.class);
+			j.putExtra("email", emailInput);
+			startActivity(j);
 		}
 	}
 	
@@ -126,7 +133,12 @@ public class AddBookPage extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		startActivity(new Intent(AddBookPage.this, AccountPage.class));
+		//startActivity(new Intent(AddBookPage.this, AccountPage.class));
+		Intent j = new Intent(
+				AddBookPage.this,
+				AccountPage.class);
+		j.putExtra("email", emailInput);
+    	startActivity(j);
 		finish();
 		return true;
 	}
