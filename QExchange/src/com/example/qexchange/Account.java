@@ -10,7 +10,7 @@ public class Account {
 		this(username, password, "Jon Snow");
 	}
 	
-	public Account(String username, String password, String name) {
+	public Account(String email, String password, String name) {
 		this.email = email;
 		this.password = password;
 		this.name = name;

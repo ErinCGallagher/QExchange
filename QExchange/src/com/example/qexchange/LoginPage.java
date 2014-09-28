@@ -36,12 +36,15 @@ public class LoginPage extends Activity {
 		
 		//validate login (query table
 		//if valid, go to main page, else stay here, show error
-		if (usernameField.getText().toString().equals("") || passwordField.getText().toString().equals("")){
-			Toast toast = Toast.makeText(getApplicationContext(), "Please enter username and password", Toast.LENGTH_LONG);
+		String emailInput = usernameField.getText().toString();
+		String passwordInput = passwordField.getText().toString();
+		if (emailInput.length() <= 0 || passwordInput.length() < 5){
+			Toast toast = Toast.makeText(getApplicationContext(), "Please enter valid username and password", Toast.LENGTH_LONG);
 			toast.show();
 		} else {
+			
 			//create account: add appropriate info to tables, check that email not already there
-			startActivity(new Intent(LoginPage.this, MainPage.class));
+			//startActivity(new Intent(LoginPage.this, MainPage.class));
 		}
     }
 
