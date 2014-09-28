@@ -22,4 +22,10 @@ public class BookListAdapter extends BaseAdapter{
          return null;
      }
 
+	@Override
+	public Object getItem(int arg0) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 }

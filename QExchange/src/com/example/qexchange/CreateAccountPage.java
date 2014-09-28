@@ -25,10 +25,7 @@ public class CreateAccountPage extends Activity {
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
-		nameField = (EditText)findViewById(R.id.nameField);
-		passwordField = (EditText)findViewById(R.id.newPassField);
-		confirmField = (EditText)findViewById(R.id.confirmPassField);
-		emailField = (EditText)findViewById(R.id.emailField);
+		
 	}
 
 	@Override
@@ -43,6 +40,15 @@ public class CreateAccountPage extends Activity {
 	}
 
 	public void createNewAccount(View view){
+		String name, email, password;
+		
+		nameField = (EditText)findViewById(R.id.nameField);
+		//name = isText
+		passwordField = (EditText)findViewById(R.id.newPassField);
+		confirmField = (EditText)findViewById(R.id.confirmPassField);
+		emailField = (EditText)findViewById(R.id.emailField);
+		
+		
 		String emailInput = emailField.getText().toString();
 		String passwordInput = passwordField.getText().toString();
 		String nameInput = nameField.getText().toString();
@@ -75,6 +81,15 @@ public class CreateAccountPage extends Activity {
 			}
 		}
 
+	}
+	
+	private String isTextValid(EditText text){
+		if (text.getText().toString().trim().length() == 0){
+			text.setError("Cannot be empty string");
+			return "retry";
+		}
+		else
+			return text.getText().toString();
 	}
 
 	@Override

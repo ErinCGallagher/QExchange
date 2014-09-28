@@ -45,6 +45,10 @@
             android:label="@string/title_activity_book_info_page" >
         </activity>
         <activity
+            android:name="com.example.qexchange.CreateAccountPage"
+            android:label="@string/title_activity_create_account" > >
+        </activity>
+        <activity
             android:name="com.example.qexchange.SearchResultPage"
             android:label="@string/title_activity_search_result_page" >
             <intent-filter>
