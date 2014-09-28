@@ -26,6 +26,10 @@ public class MainPage extends Activity {
     	startActivity(new Intent(MainPage.this, AccountPage.class));
     }
 	
+	public void launchSearchPage(View view){
+    	startActivity(new Intent(MainPage.this, SearchResultPage.class));
+    }
+	
 	public void searchTextbooks(View view){
 		Toast toast = Toast.makeText(getApplicationContext(), "Searching...", Toast.LENGTH_SHORT);
 		toast.show();

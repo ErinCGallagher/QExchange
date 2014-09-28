@@ -35,7 +35,7 @@ public class SearchResultPage extends ListActivity  {
 		Book[] TempList = null; //placeholder
 
 		BookListAdapter bookAdapter = new BookListAdapter();
-		ListView bookList = (ListView)findViewById(R.id.listView1);
+		ListView bookList = (ListView)findViewById(android.R.id.list);
 		bookList.setAdapter(bookAdapter);
 
 	}
