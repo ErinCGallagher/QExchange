@@ -29,8 +29,8 @@ public class AccountPage extends Activity implements OnItemClickListener{
 	TextView nameText, emailText;
 	
 	String title,author,course, edition,price;
-	BookListAdapter bookAdapter;
-	String title1, author1, comment1,course1;
+	BookListAdapter BookAdapter;
+	String title1, author1, comment1,course1, email1;
 	int edition1;
 	double price1;
 	List<Book> BookList;
@@ -53,7 +53,9 @@ public class AccountPage extends Activity implements OnItemClickListener{
 		emailText.setText(emailInput);
 		nameText = (TextView)findViewById(R.id.textView1);
 		nameText.setText(inputName);
-	
+		
+
+		Book[] TempList = null; //placeholder
 
 		try {
 			queryBooks();
@@ -69,7 +71,7 @@ public class AccountPage extends Activity implements OnItemClickListener{
 		}
 		
 
-		bookAdapter = new BookListAdapter();
+		BookListAdapter bookAdapter = new BookListAdapter();
 		ListView bookList = (ListView)findViewById(R.id.listView1);
 		bookList.setOnItemClickListener(this);
 		bookList.setAdapter(bookAdapter);
@@ -100,12 +102,14 @@ public class AccountPage extends Activity implements OnItemClickListener{
 		int price;
 		int comment;
 		int course;
+		int email;
 		title = result.findColumn("title");
 		author = result.findColumn("author");
 		edition = result.findColumn("edition");
 		price = result.findColumn("price");
 		comment = result.findColumn("comment");
 		course = result.findColumn("course");
+		email = result.findColumn("userEmail");
 		BookList = new ArrayList<Book>();
 		while(result.next()) {
 			title1 = result.getString(title);
@@ -116,7 +120,7 @@ public class AccountPage extends Activity implements OnItemClickListener{
 			course1 = result.getString(course);
 			System.out.println("getName"+title1);
 			System.out.println("getEdition"+edition1);
-			BookList.add(new Book(title1,author1,edition1,price1,comment1,course1));
+			BookList.add(new Book(title1,author1,edition1,price1,comment1,course1, email1));
 
 		}
 	}

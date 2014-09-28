@@ -47,6 +47,12 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 		else{
 			results = sqlSelectionExecution(arg0[1]);
 		}
+		try {
+			conn.close();
+		} catch (java.sql.SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		return results;	
 	}
 
