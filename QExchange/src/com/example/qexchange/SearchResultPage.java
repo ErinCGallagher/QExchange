@@ -119,7 +119,11 @@ public class SearchResultPage extends ListActivity  {
 
 		List<Book> BookList = new ArrayList<Book>();
 
-		//Query our SQL database
+
+		BookList.add(new Book("Algorithms", "Dawes", 1, 199.99, "CISC365"));
+		BookList.add(new Book("Python", "Lamb", 1, 132.00, "CISC101"));
+		BookList.add(new Book("Logic", "Glasgow", 1, 75.00, "CISC204"));
+		BookList.add(new Book("Evil", "Dove", 1, 250.00, "CISC327"));
 		return BookList;
 
 	}
