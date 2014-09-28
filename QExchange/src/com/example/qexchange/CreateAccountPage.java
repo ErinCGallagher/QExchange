@@ -43,26 +43,28 @@ public class CreateAccountPage extends Activity {
 	}
 
 	public void createNewAccount(View view){
-		String email = emailField.getText().toString();
-		String password = passwordField.getText().toString();
-		String name = nameField.getText().toString();
-		if (!password.equals(confirmField.getText().toString())){
+		String emailInput = emailField.getText().toString();
+		String passwordInput = passwordField.getText().toString();
+		String nameInput = nameField.getText().toString();
+		if (!passwordInput.equals(confirmField.getText().toString())){
 			Toast toast = Toast.makeText(getApplicationContext(), "Passwords don't match", Toast.LENGTH_LONG);
 			toast.show();
-		} else if (password.length() < 5) {
+		} else if (passwordInput.length() < 5) {
 			Toast toast = Toast.makeText(getApplicationContext(), "Passwords must be at least 5 characters", Toast.LENGTH_LONG);
 			toast.show();
-		} else if (name.length() <= 0) {
+		} else if (nameInput.length() <= 0) {
 			Toast toast = Toast.makeText(getApplicationContext(), "Please enter a valid name", Toast.LENGTH_LONG);
 			toast.show();
 		} else {
 			//create account: add appropriate info to tables, check that email not already there
 			try {
-				if (Query.CheckEmailExists(emailField.getText().toString())) {
+				if (Query.CheckEmailExists(emailInput)) {
 					Toast toast = Toast.makeText(getApplicationContext(), "Email already in use!", Toast.LENGTH_LONG);
+					toast.show();
 				} else {
-					String query = "INSERT INTO Accounts (email, password, name) VALUES ("+email+","+password+","+name+")";
+					String query = "INSERT INTO Accounts (email, password, name) VALUES ('"+emailInput+"','"+passwordInput+"','"+nameInput+"')";
 					Query.query("INSERT", query);
+					startActivity(new Intent(CreateAccountPage.this, MainPage.class));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -71,7 +73,6 @@ public class CreateAccountPage extends Activity {
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			}
-			startActivity(new Intent(CreateAccountPage.this, MainPage.class));
 		}
 
 	}
