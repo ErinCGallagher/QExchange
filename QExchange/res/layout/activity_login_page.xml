@@ -74,14 +74,6 @@
                 android:hint="@+string/passHint"
                 android:inputType="textPassword" />
 
-            <ImageView
-                android:id="@+id/imageView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/ic_launcher" />
-
             <EditText
                 android:id="@+id/userField"
                 android:layout_width="match_parent"
@@ -96,6 +88,14 @@
 
                 <requestFocus />
             </EditText>
+
+            <ImageView
+                android:id="@+id/imageView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/linearLayout2"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/logo1" />
 
         </RelativeLayout>
     </LinearLayout>
