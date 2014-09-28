@@ -11,15 +11,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainPage extends Activity {
-	private String emailInput, searchResults; 
+	private String emailInput, searchResults, name; 
 	SearchView searchInput;
+	Account obj;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_page);
 		Intent i = getIntent();
-		emailInput = i.getStringExtra("email");
+		//emailInput = i.getStringExtra("email");
+		//System.out.println("email main"+emailInput);
+		obj = getIntent().getParcelableExtra("userAcount");
+		name = obj.getName();
+		emailInput = obj.getEmail();
 		System.out.println("email main"+emailInput);
 	}
 
@@ -34,7 +39,8 @@ public class MainPage extends Activity {
 		Intent j = new Intent(
 				MainPage.this,
 				AccountPage.class);
-		j.putExtra("email", emailInput);
+		//j.putExtra("email", emailInput);
+		j.putExtra("userAcount", obj);
 		startActivity(j);
     	//startActivity(new Intent(MainPage.this, AccountPage.class));
     }

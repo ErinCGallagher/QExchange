@@ -1,7 +1,9 @@
 package com.example.qexchange;
 
 import java.sql.SQLException;
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Currency;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
@@ -163,6 +165,8 @@ public class SearchResultPage extends ListActivity  {
 
 
 			Book nextBook = bookList.get(arg0);
+			
+			
 
 			bookTitle.setText(nextBook.getName());
 			bookAuthor.setText(nextBook.getAuthor());
