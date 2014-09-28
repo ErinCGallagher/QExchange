@@ -170,7 +170,7 @@ public class SearchResultPage extends ListActivity  {
 
 			bookTitle.setText(nextBook.getName());
 			bookAuthor.setText(nextBook.getAuthor());
-			bookPrice.setText(Double.toString(nextBook.getPrice()));
+			bookPrice.setText(String.format("$" + "%1$,.2f", nextBook.getPrice()));
 
 			return arg1;
 
