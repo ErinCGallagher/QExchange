@@ -40,12 +40,15 @@ public class CreateAccountPage extends Activity {
 	}
 
 	public void createNewAccount(View view){
-		String name, email, password;
+		String name, email, password, confirmPass, correctPass;
 		
 		nameField = (EditText)findViewById(R.id.nameField);
-		//name = isText
+		name = isTextValid(nameField);
 		passwordField = (EditText)findViewById(R.id.newPassField);
+		password = isTextValid(passwordField);
 		confirmField = (EditText)findViewById(R.id.confirmPassField);
+		confirmPass = isTextValid(passwordField);
+		
 		emailField = (EditText)findViewById(R.id.emailField);
 		
 		
