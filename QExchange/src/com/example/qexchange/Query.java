@@ -11,7 +11,7 @@ public class Query {
 	public static ResultSet query(String operation, String query) throws SQLException, InterruptedException, ExecutionException {
 		
 		Connect database = new Connect();
-		ResultSet result =null;
+		ResultSet result = null;
 		
 		result = database.execute(operation,query).get();
 		

@@ -62,7 +62,8 @@ public class AddBookPage extends Activity {
 		//all input if correct; add to database
 		if (!title.equals("retry") && !author.equals("retry")  && edition!=0 && !courseCode.equals("retry") && price != 0 ){
 			Book b1 = new Book(title, author,edition, price, courseCode );
-			System.out.println("add book");
+			//String query = "INSERT INTO Books"
+			//Query.query("INSERT", query)
 		}
 	}
 	
