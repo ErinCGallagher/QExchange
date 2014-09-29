@@ -24,8 +24,8 @@ public class LoginPage extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_login_page);
-
-		System.out.println("usernameField"+usernameField);
+		usernameField = (EditText)findViewById(R.id.userField);
+		passwordField = (EditText)findViewById(R.id.passField);
 	}
 
 	@Override
@@ -41,8 +41,6 @@ public class LoginPage extends Activity {
 	
 	public void submitLogin(View view){
 		
-		usernameField = (EditText)findViewById(R.id.userField);
-		passwordField = (EditText)findViewById(R.id.passField);
 		//validate login (query table
 		//if valid, go to main page, else stay here, show error
 		String emailInput = usernameField.getText().toString();

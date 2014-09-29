@@ -8,7 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-public class BookInfoMain extends Activity {
+public class BookInfoMainPage extends Activity {
 	String name, author, comment, course, email;
 	int edition;
 	double price;
@@ -64,7 +64,7 @@ public class BookInfoMain extends Activity {
 	public boolean onOptionsItemSelected(MenuItem item) {
 		//startActivity(new Intent(BookInfoPage.this, AccountPage.class));
 		Intent j = new Intent(
-				BookInfoMain.this,
+				BookInfoMainPage.this,
 				SearchResultPage.class);
 		j.putExtra("newBook", obj);
 		j.putExtra("userAccount", account);

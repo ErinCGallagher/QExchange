@@ -55,8 +55,6 @@ public class AccountPage extends Activity implements OnItemClickListener{
 		nameText.setText(inputName);
 		
 
-		Book[] TempList = null; //placeholder
-
 		try {
 			queryBooks();
 		} catch (SQLException e) {

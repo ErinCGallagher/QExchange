@@ -17,6 +17,6 @@
     <string name="passHint">Password</string>
     <string name="userHint">Username</string>
     <string name="app_label">QExchange</string>
-    <string name="title_activity_book_info_main">BookInfoMain</string>
+    <string name="title_activity_book_info_main_page">BookInfoMainPage</string>
 
 </resources>

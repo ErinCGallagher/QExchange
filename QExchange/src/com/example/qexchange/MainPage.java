@@ -19,12 +19,8 @@ public class MainPage extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main_page);
-		//emailInput = i.getStringExtra("email");
-		//System.out.println("email main"+emailInput);
 		obj = getIntent().getParcelableExtra("userAccount");
-		name = obj.getName();
 		emailInput = obj.getEmail();
-		System.out.println("email main"+emailInput);
 	}
 
 	@Override
@@ -52,7 +48,7 @@ public class MainPage extends Activity {
 		Intent j = new Intent(
 				MainPage.this,
 				SearchResultPage.class);
-		j.putExtra("email", emailInput);
+		j.putExtra("userAccount", obj);
 		j.putExtra("search", searchResults);
 		startActivity(j);
     }
