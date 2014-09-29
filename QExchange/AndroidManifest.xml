@@ -17,7 +17,7 @@
         android:logo="@drawable/logo1"
         android:theme="@style/CustomTheme" >
         <activity
-            android:name=".LoginPage"
+            android:name="com.example.qexchange.LoginPage"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,34 +26,34 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CreateAccount"
+            android:name="com.example.qexchange.CreateAccount"
             android:label="@string/title_activity_create_account" >
         </activity>
         <activity
-            android:name=".AddBookPage"
+            android:name="com.example.qexchange.AddBookPage"
             android:label="@string/title_activity_book_page" >
         </activity>
         <activity
-            android:name=".MainPage"
+            android:name="com.example.qexchange.MainPage"
             android:label="@string/title_activity_main_page" >
             <meta-data
                 android:name="android.app.default_searchable"
                 android:value=".SearchResultPage" />
         </activity>
         <activity
-            android:name=".AccountPage"
+            android:name="com.example.qexchange.AccountPage"
             android:label="@string/title_activity_account_page" >
         </activity>
         <activity
-            android:name=".BookInfoPage"
+            android:name="com.example.qexchange.BookInfoPage"
             android:label="@string/title_activity_book_info_page" >
         </activity>
         <activity
-            android:name=".CreateAccountPage"
+            android:name="com.example.qexchange.CreateAccountPage"
             android:label="@string/title_activity_create_account" >
         </activity>
         <activity
-            android:name=".SearchResultPage"
+            android:name="com.example.qexchange.SearchResultPage"
             android:label="@string/title_activity_search_result_page" >
             <intent-filter>
                 <action android:name="android.intent.action.SEARCH" />
@@ -64,8 +64,8 @@
                 android:resource="@xml/searchable" />
         </activity>
         <activity
-            android:name=".BookInfoMain"
-            android:label="@string/title_activity_book_info_main" >
+            android:name="com.example.qexchange.BookInfoMainPage"
+            android:label="@string/title_activity_book_info_main_page" >
         </activity>
     </application>
 

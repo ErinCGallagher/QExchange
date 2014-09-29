@@ -53,6 +53,7 @@ public class Book implements Parcelable{
 		public String getTag(){
 			return tag;
 		}
+		
 		public String getEmail(){
 			return email;
 		}

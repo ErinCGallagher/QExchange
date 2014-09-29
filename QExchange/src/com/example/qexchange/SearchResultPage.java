@@ -31,16 +31,23 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 	String title1, author1, comment1,course1, email1;
 	int edition1;
 	double price1;
-	List<Book> BookList;
-	Book obj;
+	List<Book> searchedBooks;
+	//Book obj;
+	Account useraccount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_result_page);
 		
-		obj = getIntent().getParcelableExtra("userAccount");
+		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
+			getActionBar().setDisplayHomeAsUpEnabled(true);
+		}
+		
+		useraccount = getIntent().getParcelableExtra("userAccount");
+		System.out.println(useraccount.getEmail());
 		searchInput = getIntent().getStringExtra("search");
+		
 		try {
 			queryBooks();
 		} catch (SQLException e) {
@@ -57,32 +64,25 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		BookListAdapter bookAdapter = new BookListAdapter();
 		ListView bookList = (ListView)findViewById(android.R.id.list);
 		bookList.setAdapter(bookAdapter);
-		
-		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
+		bookList.setOnItemClickListener(this);
+	
 
 	}
 	
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
-		Book currentBook = BookList.get(position);
-		Intent j = new Intent(
+		Book currentBook = searchedBooks.get(position);
+		Intent m = new Intent(
 				SearchResultPage.this,
-				BookInfoMain.class);
-		j.putExtra("newBook", currentBook);
-		j.putExtra("userAccount", obj);
-		startActivity(j);
+				BookInfoMainPage.class);
+		m.putExtra("newBook", currentBook);
+		m.putExtra("userAccount", useraccount);
+		startActivity(m);
+		finish();
 		
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.search_result_page, menu);
-		return true;
-	}
 
 	public void queryBooks()throws SQLException, InterruptedException, ExecutionException{
 		java.sql.ResultSet result =null;
@@ -102,7 +102,7 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		comment = result.findColumn("comment");
 		course = result.findColumn("course");
 		email = result.findColumn("userEmail");
-		BookList = new ArrayList<Book>();
+		searchedBooks = new ArrayList<Book>();
 		while(result.next()) {
 			title1 = result.getString(title);
 			author1 = result.getString(author);
@@ -111,16 +111,34 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 			comment1 = result.getString(comment);
 			course1 = result.getString(course);
 			email1 = result.getString(email);
-			System.out.println("getName"+title1);
-			System.out.println("getEdition"+edition1);
-			BookList.add(new Book(title1,author1,edition1,price1,comment1,course1, email1));
+			searchedBooks.add(new Book(title1,author1,edition1,price1,comment1,course1, email1));
 
 		}
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.search_result_page, menu);
+		return true;
+	}
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		Intent j = new Intent(
+				SearchResultPage.this,
+				MainPage.class);
+		//System.out.println(useraccount.getEmail());
+		j.putExtra("userAccount", useraccount);
+    	startActivity(j);
+		finish();
+		return true;
 	}
 
 	public class BookListAdapter extends BaseAdapter {
 
-		List<Book> bookList = BookList;
+		List<Book> bookList = searchedBooks;
+
 
 		public int getCount(){
 			return bookList.size();
@@ -152,13 +170,10 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 
 
 			Book nextBook = bookList.get(arg0);
-			
-			
 
 			bookTitle.setText(nextBook.getName());
 			bookAuthor.setText(nextBook.getAuthor());
 			bookPrice.setText(String.format("$" + "%1$,.2f", nextBook.getPrice()));
-
 			return arg1;
 
 		}
@@ -166,27 +181,11 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		{
 			return bookList.get(position);
 		}
+		
 
 	}
 	//End Class
-	
-	public void launchMainPage(View view) {
-		Intent j = new Intent(
-				SearchResultPage.this,
-				MainPage.class);
-    	startActivity(j);
-	}
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		Intent j = new Intent(
-				SearchResultPage.this,
-				MainPage.class);
-		j.putExtra("userAccount", obj);
-    	startActivity(j);
-		finish();
-		return true;
-	}
+
 }
 
 
