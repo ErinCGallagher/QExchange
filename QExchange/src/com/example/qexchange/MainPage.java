@@ -36,6 +36,7 @@ public class MainPage extends Activity {
 				AccountPage.class);
 		//j.putExtra("email", emailInput);
 		j.putExtra("userAccount", obj);
+		j.putExtra("flag", "Main");
 		startActivity(j);
     	//startActivity(new Intent(MainPage.this, AccountPage.class));
     }
