@@ -24,16 +24,15 @@ import android.widget.TextView;
 
 public class SearchResultPage extends ListActivity implements OnItemClickListener  {
 	
-	Connect database = new Connect();
-	String title,author,course, edition,price;
-	BookListAdapter bookAdapter;
-	String emailInput, searchInput;
-	String title1, author1, comment1,course1, email1;
-	int edition1;
-	double price1;
-	List<Book> searchedBooks;
-	//Book obj;
-	Account useraccount;
+	private Connect database = new Connect();
+	private String title,author,course, edition,price;
+	private BookListAdapter bookAdapter;
+	private String emailInput, searchInput;
+	private String title1, author1, comment1,course1, email1;
+	private int edition1;
+	private double price1;
+	private List<Book> searchedBooks;
+	private Account useraccount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +44,6 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		}
 		
 		useraccount = getIntent().getParcelableExtra("userAccount");
-		System.out.println(useraccount.getEmail());
 		searchInput = getIntent().getStringExtra("search");
 		
 		try {
@@ -88,13 +86,9 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		java.sql.ResultSet result =null;
 		String st = "SELECT * FROM Books WHERE course = '"+searchInput+"'";
 		result = database.execute("SELECT",st).get();
-		int title;
-		int author;
-		int edition;
-		int price;
-		int comment;
-		int course;
-		int email;
+		int title, author, edition, price, comment, course, email;
+
+
 		title = result.findColumn("title");
 		author = result.findColumn("author");
 		edition = result.findColumn("edition");
@@ -103,6 +97,7 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		course = result.findColumn("course");
 		email = result.findColumn("userEmail");
 		searchedBooks = new ArrayList<Book>();
+		
 		while(result.next()) {
 			title1 = result.getString(title);
 			author1 = result.getString(author);
@@ -128,7 +123,6 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		Intent j = new Intent(
 				SearchResultPage.this,
 				MainPage.class);
-		//System.out.println(useraccount.getEmail());
 		j.putExtra("userAccount", useraccount);
     	startActivity(j);
 		finish();

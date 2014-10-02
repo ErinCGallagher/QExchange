@@ -23,10 +23,10 @@ import android.view.View;
 import android.widget.EditText;
 
 public class AddBookPage extends Activity {
-	Connect database = new Connect();
-	String emailInput, inputName;
-	Account obj;
-	String emailGet;
+	private Connect database = new Connect();
+	private String emailInput, inputName;
+	private Account obj;
+	private String emailGet;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -46,24 +46,31 @@ public class AddBookPage extends Activity {
 		
 		EditText editTitle = (EditText) findViewById(R.id.nameField);
 		title = isTextValid(editTitle);
+		//book title cannot be greater than 50 characters
 		if (title.length() > 50) {
 			title = "retry";
 			editTitle.setError("Book titles must be no longer than 50 characters");
 		}
+		
 		EditText editAuthor = (EditText) findViewById(R.id.newPassField);
 		author = isTextValid(editAuthor);
+		//author name cannot be greater than 50 characters
 		if (author.length() > 50) {
 			author = "retry";
 			editAuthor.setError("Author names must be no longer than 50 characters");
 		}
+		
 		EditText editEdition = (EditText) findViewById(R.id.editText5);
 		edition = isIntValid(editEdition);
+		//edition check
 		if (edition > 1000 || edition <= 0) {
 			edition = 0;
 			editEdition.setError("Not a valid edition number");
 		}
+		
 		EditText editCourseCode = (EditText) findViewById(R.id.confirmPassField);
 		courseCode = isTextValid(editCourseCode);
+		//course code check and trim
 		if (courseCode.length() > 11 || courseCode.length() < 7) {
 			courseCode = "retry";
 			editCourseCode.setError("Not a valid course code");
@@ -71,14 +78,18 @@ public class AddBookPage extends Activity {
 			//removes all spaces from course code
 			courseCode = courseCode.replaceAll("\\s","");
 		}
+		
 		EditText editPrice = (EditText) findViewById(R.id.emailField);
 		price = isDoubleValid(editPrice);	
+		//price check
 		if (price > 1000 || price <= 0) {
 			price = 0;
 			editPrice.setError("Please enter a price between 0 and 1000");
 		}
+		
 		EditText editComment = (EditText) (findViewById(R.id.editText1));
 		comment = editComment.getText().toString();
+		//comment check
 		if (comment.length() > 200) {
 			comment = "retry";
 			editComment.setError("Comments can be no longer than 200 characters");
@@ -144,8 +155,6 @@ public class AddBookPage extends Activity {
 		java.sql.ResultSet result =null;
 		String st = "SELECT name FROM Accounts WHERE email = ('"+emailInput+"')";
 		result = database.execute("SELECT",st).get();
-		//int email = result.findColumn("email");
-		//int password  = result.findColumn("password");
 		int name;
 		name = result.findColumn("name");
 		while(result.next()) {

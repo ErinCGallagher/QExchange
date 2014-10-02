@@ -5,8 +5,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-import com.example.qexchange.SearchResultPage.BookListAdapter;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
@@ -24,17 +22,17 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 public class AccountPage extends Activity implements OnItemClickListener{
-	String emailInput, inputName;
-	Connect database = new Connect();
-	TextView nameText, emailText;
+	private String emailInput, inputName;
+	private Connect database = new Connect();
+	private TextView nameText, emailText;
 
-	String title,author,course, edition,price;
-	BookListAdapter BookAdapter;
-	String title1, author1, comment1,course1, email1;
-	int edition1;
-	double price1;
-	List<Book> BookList;
-	Account obj;
+	private String title,author,course, edition,price;
+	private BookListAdapter BookAdapter;
+	private String title1, author1, comment1,course1, email1;
+	private int edition1;
+	private double price1;
+	private List<Book> BookList;
+	private Account obj;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -92,8 +90,6 @@ public class AccountPage extends Activity implements OnItemClickListener{
 			java.sql.ResultSet result =null;
 			String st = "SELECT * FROM Books WHERE userEmail = ('"+emailInput+"')";
 			result = database.execute("SELECT",st).get();
-			//int email = result.findColumn("email");
-			//int password  = result.findColumn("password");
 			int title;
 			int author;
 			int edition;
@@ -116,8 +112,7 @@ public class AccountPage extends Activity implements OnItemClickListener{
 				price1 = result.getDouble(price);
 				comment1 = result.getString(comment);
 				course1 = result.getString(course);
-				System.out.println("getName"+title1);
-				System.out.println("getEdition"+edition1);
+
 				BookList.add(new Book(title1,author1,edition1,price1,comment1,course1, email1));
 
 			}

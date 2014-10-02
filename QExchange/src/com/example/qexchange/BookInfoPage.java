@@ -9,11 +9,11 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class BookInfoPage extends Activity {
-	String name, author, comment, course, email;
-	int edition;
-	double price;
-	Book obj;
-	Account account;
+	private String name, author, comment, course, email;
+	private int edition;
+	private double price;
+	private Book obj;
+	private Account account;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

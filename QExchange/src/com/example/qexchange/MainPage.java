@@ -12,8 +12,8 @@ import android.widget.Toast;
 
 public class MainPage extends Activity {
 	private String emailInput, searchResults, name; 
-	SearchView searchInput;
-	Account obj;
+	private SearchView searchInput;
+	private Account obj;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -34,18 +34,16 @@ public class MainPage extends Activity {
 		Intent j = new Intent(
 				MainPage.this,
 				AccountPage.class);
-		//j.putExtra("email", emailInput);
 		j.putExtra("userAccount", obj);
 		j.putExtra("flag", "Main");
 		startActivity(j);
-    	//startActivity(new Intent(MainPage.this, AccountPage.class));
     }
 	
 	public void launchSearchPage(View view){
 		searchInput = (SearchView)findViewById(R.id.searchView1);
-		searchResults =searchInput.getQuery().toString().trim();
+		searchResults = searchInput.getQuery().toString().trim();
 		searchResults = searchResults.replaceAll("\\s","");
-    	//startActivity(new Intent(MainPage.this, SearchResultPage.class));
+
 		Intent j = new Intent(
 				MainPage.this,
 				SearchResultPage.class);

@@ -18,7 +18,7 @@ import android.widget.Toast;
 
 public class LoginPage extends Activity {
 	
-	EditText usernameField, passwordField;
+	private EditText usernameField, passwordField;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {

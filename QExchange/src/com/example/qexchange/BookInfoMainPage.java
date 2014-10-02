@@ -9,19 +9,20 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 public class BookInfoMainPage extends Activity {
-	String name, author, comment, course, email;
-	int edition;
-	double price;
-	Book obj;
-	Account account;
+	private String name, author, comment, course, email;
+	private int edition;
+	private double price;
+	private Book obj;
+	private Account account;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_book_info_page);
+		setContentView(R.layout.activity_book_info_main_page);
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
+		
 		obj = getIntent().getParcelableExtra("newBook");
 		name = obj.getName();
 		author = obj.getAuthor();
@@ -62,11 +63,9 @@ public class BookInfoMainPage extends Activity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		//startActivity(new Intent(BookInfoPage.this, AccountPage.class));
 		Intent j = new Intent(
 				BookInfoMainPage.this,
 				SearchResultPage.class);
-		j.putExtra("newBook", obj);
 		j.putExtra("userAccount", account);
 		startActivity(j);
 		finish();
