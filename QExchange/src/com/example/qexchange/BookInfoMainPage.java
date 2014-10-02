@@ -14,6 +14,7 @@ public class BookInfoMainPage extends Activity {
 	private double price;
 	private Book obj;
 	private Account account;
+	private String search;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,8 @@ public class BookInfoMainPage extends Activity {
 		course = obj.getTag();
 		email = obj.getEmail();
 		
+		search = getIntent().getStringExtra("search");
+		System.out.println("search"+search);
 		
 		TextView emailText = (TextView)findViewById(R.id.emailText);
 		emailText.setText(email);
@@ -67,6 +70,7 @@ public class BookInfoMainPage extends Activity {
 				BookInfoMainPage.this,
 				SearchResultPage.class);
 		j.putExtra("userAccount", account);
+		j.putExtra("search",  search);
 		startActivity(j);
 		finish();
 		return true;

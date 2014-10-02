@@ -45,6 +45,7 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		
 		useraccount = getIntent().getParcelableExtra("userAccount");
 		searchInput = getIntent().getStringExtra("search");
+		System.out.println("search"+searchInput);
 		
 		try {
 			queryBooks();
@@ -76,6 +77,7 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 				BookInfoMainPage.class);
 		m.putExtra("newBook", currentBook);
 		m.putExtra("userAccount", useraccount);
+		m.putExtra("search",searchInput);
 		startActivity(m);
 		finish();
 		
