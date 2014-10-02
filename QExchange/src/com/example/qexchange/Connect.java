@@ -56,7 +56,7 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 		return results;	
 	}
 
-
+	//create connection
 	public Connection getConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException, java.sql.SQLException {
 
 		Connection conn = null;
@@ -82,7 +82,6 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 
 	public void sqlInsertExecution(String arg0){
 		PreparedStatement stmt;
-		ResultSet results = null;
 		try {
 			stmt = conn.prepareStatement(arg0);
 			stmt.executeUpdate();
