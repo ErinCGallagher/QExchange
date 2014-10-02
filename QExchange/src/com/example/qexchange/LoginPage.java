@@ -39,48 +39,47 @@ public class LoginPage extends Activity {
 		startActivity(new Intent(LoginPage.this, CreateAccountPage.class));
     }
 	
+	
+	//if valid, go to main page, else stay here, show error
 	public void submitLogin(View view){
+		Account userAccount;
 		
-		//validate login (query table
-		//if valid, go to main page, else stay here, show error
 		String emailInput = usernameField.getText().toString();
 		String passwordInput = passwordField.getText().toString();
-		Account userAccount;
+		
 		boolean validInput = true;
+		
 		if (emailInput.length() <= 0 || emailInput.length() >= 50 ) {
 			usernameField.setError("Enter valid username"); 
 			validInput = false;
 		} 
+		
 		if (passwordInput.length() < 5 || passwordInput.length() >= 20){
 			passwordField.setError("Enter valid password");
 			validInput = false;
 		} 
+		
 		if (validInput) {
-			String query = "SELECT * FROM Accounts WHERE email = '"+emailInput+"' AND password = '"+passwordInput+"'";
-			System.out.println(query);
+			String query = "SELECT name FROM Accounts WHERE email = '"+emailInput+"' AND password = '"+passwordInput+"'";
+
 			try {
+				//finished query
 				ResultSet results = Query.query("SELECT", query);
-				System.out.println("Done query");
+				
+				//found account with username password validation
 				if (results.next()) {
-					System.out.println("In if");
 					ResultSetMetaData rsmd=results.getMetaData();
 
-					String userEmail = results.getString("email");
-					String userPassword = results.getString("password");
 					String userName = results.getString("name");
-					userAccount = new Account(userEmail, userPassword, userName);
-					System.out.println("logged in");
-					System.out.println("get email"+userAccount.getEmail());
+					userAccount = new Account(emailInput, userName);
+
 					Intent j = new Intent(
 							LoginPage.this,
 							MainPage.class);
-					//j.putExtra("email", userAccount.getEmail());
 					j.putExtra("userAccount", userAccount);
 					startActivity(j);
-				} else {
-					//Toast toast = Toast.makeText(getApplicationContext(), "Incorrect username or password", Toast.LENGTH_LONG);
-					//toast.show();
 					
+				} else { //if there is no account that exists with the inputted login info
 					AlertDialog.Builder dlgAlert  = new AlertDialog.Builder(this);
 
 		            dlgAlert.setMessage("Invalid username or password.");
@@ -96,6 +95,7 @@ public class LoginPage extends Activity {
 		                }
 		            });
 				}
+				
 			} catch (SQLException e) {
 				e.printStackTrace();
 			} catch (InterruptedException e) {
@@ -103,9 +103,8 @@ public class LoginPage extends Activity {
 			} catch (ExecutionException e) {
 				e.printStackTrace();
 			}
-			//create account: add appropriate info to tables, check that email not already there
-			//startActivity(new Intent(LoginPage.this, MainPage.class));
+
 		}
-    }
+	}
 
 }

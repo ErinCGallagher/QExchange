@@ -17,8 +17,9 @@ import android.widget.Toast;
 
 public class CreateAccountPage extends Activity {
 
-	EditText nameField, passwordField, confirmField, emailField;
-	Account userAccount = null;
+	private EditText nameField, passwordField, confirmField, emailField;
+	private Account userAccount = null;
+	private String nameInput, emailInput, passwordInput, confirmPass = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,36 +43,39 @@ public class CreateAccountPage extends Activity {
 	}
 
 	public void createNewAccount(View view){
-		String nameInput, emailInput, passwordInput, confirmPass = null;
+		
 		Boolean correctPass = false;
 
 		nameField = (EditText)findViewById(R.id.nameField);
 		nameInput = isTextValid(nameField);
+		
+		//name cannot be > 50
 		if (nameInput.length() > 50) {
 			nameInput = "retry";
 			nameField.setError("Name can be no longer than 50 characters");
 		}
+		
 		passwordField = (EditText)findViewById(R.id.newPassField);
 		passwordInput = isTextValid(passwordField);
 		confirmField = (EditText)findViewById(R.id.confirmPassField);
-		if (passwordInput.length() < 5){
-			passwordField.setError("Passwords must be at least 5 characters");
+		
+		//password needs to be greater or = to 5
+		if (passwordInput.length() < 5 || passwordInput.length() > 20){
+			passwordField.setError("Passwords must be at least 5 characters but less than 20 characters");
 		}
-		else if (passwordInput.length() > 20) {
-			passwordInput = "retry";
-			passwordField.setError("Passwords can be no longer than 20 characters");
-		} else {
-			confirmPass = isTextValid(confirmField);
-		}
+		correctPass = doPasswordsMatch(passwordInput, confirmPass);
+
 		emailField = (EditText)findViewById(R.id.emailField);
 		emailInput = isTextValid(emailField);
+		
+		//email must be less than 50 characters
 		if (emailInput.length() > 50) {
 			emailInput = "retry";
 			emailField.setError("Emails can be no longer than 50 characters");
 		}
-		correctPass = doPasswordsMatch(passwordInput, confirmPass);
+
 		if (!nameInput.equals("retry") && !emailInput.equals("retry") && !passwordInput.equals("retry") && correctPass){
-			userAccount = new Account(emailInput, passwordInput, nameInput);
+			userAccount = new Account(emailInput, nameInput);
 			check(userAccount);
 		}
 
@@ -83,16 +87,15 @@ public class CreateAccountPage extends Activity {
 					toast.show();
 					emailField.setError("Email in Use");
 				} else {
-					String query = "INSERT INTO Accounts (email, password, name) VALUES ('"+e1.getEmail()+"','"+e1.getPassword()+"','"+e1.getName()+"')";
+					String query = "INSERT INTO Accounts (email, password, name) VALUES ('"+e1.getEmail()+"','"+passwordInput+"','"+e1.getName()+"')";
 					Query.query("INSERT", query);
-					System.out.println("get email"+e1.getEmail());
+					
+					//go to Main Page
 					Intent j = new Intent(
 							CreateAccountPage.this,
 							MainPage.class);
-					//j.putExtra("email", e1.getEmail());
 					j.putExtra("userAccount", userAccount);
 					startActivity(j);
-					//startActivity(new Intent(CreateAccountPage.this, MainPage.class));
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();
@@ -128,8 +131,7 @@ public class CreateAccountPage extends Activity {
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		//Bundle b = new Bundle();
-		//b.putSerializable(Constants.CUSTOM_LISTING,e1);
+
 		Intent j = new Intent(
 				CreateAccountPage.this,
 				LoginPage.class);

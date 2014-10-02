@@ -6,21 +6,12 @@ import android.os.Parcelable;
 public class Account implements Parcelable{
 
 	private String email;
-	private String password;
 	private String name;
 
-	public Account(String email, String password) {
-		this(email, password, "Jon Snow");
-	}
 
-	public Account(String email, String password, String name) {
+	public Account(String email, String name) {
 		this.email = email;
-		this.password = password;
 		this.name = name;
-	}
-
-	public String getPassword() {
-		return password;
 	}
 
 	public String getName() {
@@ -33,12 +24,11 @@ public class Account implements Parcelable{
 
 	//parcel part
 	public Account(Parcel in){
-		String[] data = new String[3];
+		String[] data = new String[2];
 
 		in.readStringArray(data);
 		this.email = data[0];
-		this.password = data[1];
-		this.name = data[2];
+		this.name = data[1];
 	}
 	@Override
 	public int describeContents() {
@@ -49,7 +39,7 @@ public class Account implements Parcelable{
 	@Override
 	public void writeToParcel(Parcel dest, int flags) {
 		// TODO Auto-generated method stub
-		dest.writeStringArray(new String[]{this.email,this.password,this.name});
+		dest.writeStringArray(new String[]{this.email,this.name});
 	}
 
 	public static final Parcelable.Creator<Account> CREATOR= new Parcelable.Creator<Account>() {
