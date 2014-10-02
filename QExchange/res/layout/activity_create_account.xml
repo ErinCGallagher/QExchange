@@ -17,23 +17,13 @@
         android:orientation="vertical" >
     </LinearLayout>
 
-    <Button
-        android:id="@+id/account"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginBottom="62dp"
-        android:onClick="createNewAccount"
-        android:text="Create Account" />
-
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/linearLayout1"
         android:layout_below="@+id/linearLayout1"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Name" />
 
     <EditText
@@ -63,6 +53,7 @@
         android:layout_alignLeft="@+id/nameField"
         android:layout_below="@+id/nameField"
         android:layout_marginTop="15dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Password" />
 
     <TextView
@@ -71,7 +62,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/confirmPassField"
         android:layout_below="@+id/newPassField"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Confirm Password" />
 
     <TextView
@@ -81,6 +73,7 @@
         android:layout_alignRight="@+id/textView1"
         android:layout_below="@+id/confirmPassField"
         android:layout_marginTop="15dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
         android:text="Email" />
 
     <EditText
@@ -91,10 +84,7 @@
         android:layout_alignRight="@+id/account"
         android:layout_below="@+id/textView4"
         android:ems="10"
-        android:inputType="textEmailAddress" >
-
-        <requestFocus />
-    </EditText>
+        android:inputType="textEmailAddress" />
 
     <EditText
         android:id="@+id/nameField"
@@ -103,17 +93,19 @@
         android:layout_alignLeft="@+id/textView1"
         android:layout_alignRight="@+id/emailField"
         android:layout_below="@+id/textView1"
-        android:ems="10" />
+        android:ems="10" >
+
+        <requestFocus />
+    </EditText>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/account"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignLeft="@+id/textView1"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/account"
-        android:layout_marginBottom="18dp"
-        android:onClick="launchLoginPage"
-        android:text="Cancel" />
+        android:layout_alignParentRight="true"
+        android:onClick="createNewAccount"
+        android:text="Create" />
 
 </RelativeLayout>

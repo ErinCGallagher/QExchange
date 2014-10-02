@@ -13,7 +13,7 @@
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_bg"
-        android:label="@string/app_name"
+        android:label="Login"
         android:logo="@drawable/logo1"
         android:theme="@style/CustomTheme" >
         <activity
