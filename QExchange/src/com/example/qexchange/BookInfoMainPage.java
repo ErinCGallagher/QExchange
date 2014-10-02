@@ -34,7 +34,6 @@ public class BookInfoMainPage extends Activity {
 		email = obj.getEmail();
 		
 		search = getIntent().getStringExtra("search");
-		System.out.println("search"+search);
 		
 		TextView emailText = (TextView)findViewById(R.id.emailText);
 		emailText.setText(email);
