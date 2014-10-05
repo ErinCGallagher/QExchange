@@ -6,12 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.Properties;
 
-import com.mysql.jdbc.*;
-
-import android.content.ContentValues;
 import android.database.SQLException;
 import android.os.AsyncTask;
-import android.util.Log;
 
 
 public class Connect  extends AsyncTask<String, Void, ResultSet>{
@@ -21,7 +17,6 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 	String serverName = "sql3.freesqldatabase.com";
 	int portNumber = 3306;
 	Connection conn;
-	private volatile boolean running = true;
 
 	@Override
 	protected ResultSet doInBackground(String... arg0) throws SQLException {
@@ -61,7 +56,6 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 
 		Connection conn = null;
 		Properties connectionProps = new Properties();
-		String response = " ";
 		connectionProps.put("user", this.email);
 		connectionProps.put("password", this.password);
 

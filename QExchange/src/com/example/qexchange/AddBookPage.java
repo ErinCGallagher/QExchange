@@ -1,22 +1,12 @@
 package com.example.qexchange;
 
 import java.sql.SQLException;
-import java.util.List;
 import java.util.concurrent.ExecutionException;
 
-
-
-
-
-
-
-
-
-
-import android.os.Build;
-import android.os.Bundle;
 import android.app.Activity;
 import android.content.Intent;
+import android.os.Build;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -26,7 +16,6 @@ public class AddBookPage extends Activity {
 	private Connect database = new Connect();
 	private String emailInput, inputName;
 	private Account obj;
-	private String emailGet;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){

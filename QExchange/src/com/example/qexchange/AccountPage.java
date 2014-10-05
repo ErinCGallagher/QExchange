@@ -26,8 +26,6 @@ public class AccountPage extends Activity implements OnItemClickListener{
 	private Connect database = new Connect();
 	private TextView nameText, emailText;
 
-	private String title,author,course, edition,price;
-	private BookListAdapter BookAdapter;
 	private String title1, author1, comment1,course1, email1;
 	private int edition1;
 	private double price1;

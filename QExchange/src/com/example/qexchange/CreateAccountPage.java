@@ -3,12 +3,10 @@ package com.example.qexchange;
 import java.sql.SQLException;
 import java.util.concurrent.ExecutionException;
 
-import android.os.Build;
-import android.os.Bundle;
-import android.provider.SyncStateContract.Constants;
 import android.app.Activity;
 import android.content.Intent;
-import android.support.v4.app.NavUtils;
+import android.os.Build;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
