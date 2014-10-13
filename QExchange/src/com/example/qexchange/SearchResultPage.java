@@ -23,7 +23,7 @@ import android.widget.TextView;
 
 
 public class SearchResultPage extends ListActivity implements OnItemClickListener  {
-	
+
 	private Connect database = new Connect();
 	private String title,author,course, edition,price;
 	private BookListAdapter bookAdapter;
@@ -31,55 +31,74 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 	private String title1, author1, comment1,course1, email1;
 	private int edition1;
 	private double price1;
-	private List<Book> searchedBooks;
+	private ArrayList<Book> searchedBooks = new ArrayList<Book>();
+	private ArrayList<BookBunch> passedBack = new ArrayList<BookBunch>();
 	private Account useraccount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_search_result_page);
-		
+
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
-		
-		useraccount = getIntent().getParcelableExtra("userAccount");
-		searchInput = getIntent().getStringExtra("search");
-		
-		try {
-			queryBooks();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (getIntent().getStringExtra("flag").equals("bookInfoMain")){
+			useraccount = getIntent().getParcelableExtra("userAccount");
+			ArrayList<BookBunch> bookSaved = getIntent().getParcelableArrayListExtra("bookBunch");
+			for(final BookBunch point: bookSaved){
+				searchedBooks.add(point.getBookBunch());
+
+			}
+
+		}
+		else{
+			System.out.println("from search page");
+			useraccount = getIntent().getParcelableExtra("userAccount");
+			searchInput = getIntent().getStringExtra("search");
+
+			try {
+				queryBooks();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		BookListAdapter bookAdapter = new BookListAdapter();
 		ListView bookList = (ListView)findViewById(android.R.id.list);
 		bookList.setAdapter(bookAdapter);
 		bookList.setOnItemClickListener(this);
-	
+
 
 	}
-	
+
 	@Override
 	public void onItemClick(AdapterView<?> parent, View view, int position,
 			long id) {
 		Book currentBook = searchedBooks.get(position);
+		for(Book point: searchedBooks){
+			System.out.println(point.getName());
+			passedBack.add(new BookBunch(point));
+			System.out.println("passedBack"+ passedBack);
+		}
 		Intent m = new Intent(
 				SearchResultPage.this,
 				BookInfoMainPage.class);
 		m.putExtra("newBook", currentBook);
 		m.putExtra("userAccount", useraccount);
 		m.putExtra("search",searchInput);
+		m.putExtra("bookBunch", passedBack);
+		System.out.println("HERE");
 		startActivity(m);
 		finish();
-		
+
 	}
 
 
@@ -98,7 +117,7 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		course = result.findColumn("course");
 		email = result.findColumn("userEmail");
 		searchedBooks = new ArrayList<Book>();
-		
+
 		while(result.next()) {
 			title1 = result.getString(title);
 			author1 = result.getString(author);
@@ -111,21 +130,21 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 
 		}
 	}
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.search_result_page, menu);
 		return true;
 	}
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		Intent j = new Intent(
 				SearchResultPage.this,
 				MainPage.class);
 		j.putExtra("userAccount", useraccount);
-    	startActivity(j);
+		startActivity(j);
 		finish();
 		return true;
 	}
@@ -176,7 +195,7 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 		{
 			return bookList.get(position);
 		}
-		
+
 
 	}
 	//End Class

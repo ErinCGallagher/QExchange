@@ -1,5 +1,8 @@
 package com.example.qexchange;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.os.Build;
 import android.os.Bundle;
 import android.app.Activity;
@@ -15,6 +18,8 @@ public class BookInfoMainPage extends Activity {
 	private Book obj;
 	private Account account;
 	private String search;
+	private ArrayList<BookBunch> bookSaved;
+	private ArrayList<Book> searchedBook = new ArrayList<Book>();
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +37,7 @@ public class BookInfoMainPage extends Activity {
 		comment = obj.getComment();
 		course = obj.getTag();
 		email = obj.getEmail();
+		System.out.println("emailll: " +email);
 		
 		search = getIntent().getStringExtra("search");
 		
@@ -53,7 +59,10 @@ public class BookInfoMainPage extends Activity {
 		//for going "back" to the account page
 		account = getIntent().getParcelableExtra("userAccount");
 		
-
+		bookSaved = getIntent().getParcelableArrayListExtra("bookBunch");
+		for(BookBunch point: bookSaved){
+			searchedBook.add(point.getBookBunch());
+		}	
 	}
 
 	@Override
@@ -68,8 +77,10 @@ public class BookInfoMainPage extends Activity {
 		Intent j = new Intent(
 				BookInfoMainPage.this,
 				SearchResultPage.class);
+		j.putExtra("flag","bookInfoMain");
 		j.putExtra("userAccount", account);
 		j.putExtra("search",  search);
+		j.putExtra("bookBunch", bookSaved);
 		startActivity(j);
 		finish();
 		return true;

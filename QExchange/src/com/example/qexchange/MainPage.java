@@ -49,6 +49,7 @@ public class MainPage extends Activity {
 				SearchResultPage.class);
 		j.putExtra("userAccount", obj);
 		j.putExtra("search", searchResults);
+		j.putExtra("flag", "MainPage");
 		startActivity(j);
     }
 	
