@@ -2,19 +2,17 @@ package com.example.qexchange;
 
 
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.concurrent.ExecutionException;
 
-import android.os.Bundle;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.Menu;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
 public class LoginPage extends Activity {
 	
@@ -68,7 +66,6 @@ public class LoginPage extends Activity {
 				
 				//found account with username password validation
 				if (results.next()) {
-					ResultSetMetaData rsmd=results.getMetaData();
 
 					String userName = results.getString("name");
 					userAccount = new Account(emailInput, userName);

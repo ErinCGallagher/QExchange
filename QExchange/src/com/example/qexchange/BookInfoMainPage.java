@@ -53,8 +53,8 @@ public class BookInfoMainPage extends Activity {
 		priceText.setText(Double.toString(price));
 		TextView courseText = (TextView)findViewById(R.id.courseText);
 	    courseText.setText(course);
-		
-		
+	    TextView commentText = (TextView)findViewById(R.id.commentText);
+	    commentText.setText(comment);
 		
 		//for going "back" to the account page
 		account = getIntent().getParcelableExtra("userAccount");

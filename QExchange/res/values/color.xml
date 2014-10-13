@@ -3,5 +3,7 @@
     <color name="red">#F00</color>
     <color name="priceColor">#006600</color>
     <color name="blueText">#0099CC</color>
+    <color name="medBlue">#50C0E9</color>
+    <color name="medBlue2">#33B5E5</color>
     
 </resources>

@@ -27,7 +27,6 @@
         android:text="Title"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-
     <TextView
         android:id="@+id/editionText"
         android:layout_width="wrap_content"
@@ -43,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/authorText"
         android:layout_below="@+id/editionText"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="15dp"
         android:text="Course"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -51,10 +50,12 @@
         android:id="@+id/emailText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button1"
+        android:layout_alignParentRight="true"
         android:layout_alignTop="@+id/imageView1"
-        android:layout_toRightOf="@+id/courseText"
         android:layout_marginTop="8dp"
+        android:layout_toRightOf="@+id/courseText"
+        android:gravity="center"
+        android:textStyle="bold"
         android:text="TextView" />
 
     <TextView
@@ -72,7 +73,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/titleText"
         android:layout_below="@+id/titleText"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:text="Author"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -100,7 +101,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/editionText"
         android:layout_below="@+id/courseText"
-        android:layout_marginTop="14dp"
+        android:layout_marginTop="15dp"
         android:text="Price"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
@@ -119,8 +120,27 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/authorText"
         android:layout_below="@+id/authorText"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="15dp"
         android:text="Edition"
         android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/commentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/priceText"
+        android:layout_below="@+id/priceText"
+        android:layout_marginTop="15dp"
+        android:text="Comment"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/commentText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_below="@+id/commentLabel"
+        android:layout_marginTop="8dp"
+        android:text="TextView" />
 
 </RelativeLayout>
