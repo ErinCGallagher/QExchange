@@ -29,7 +29,8 @@ public class AccountPage extends Activity implements OnItemClickListener{
 	private String title1, author1, comment1,course1, email1;
 	private int edition1;
 	private double price1;
-	private List<Book> BookList;
+	private ArrayList<Book> BookList = new ArrayList<Book>();
+	private ArrayList<BookBunch> passedBack = new ArrayList<BookBunch>();
 	private Account obj;
 
 	@Override
@@ -39,28 +40,42 @@ public class AccountPage extends Activity implements OnItemClickListener{
 		if (Build.VERSION.SDK_INT >=Build.VERSION_CODES.HONEYCOMB){
 			getActionBar().setDisplayHomeAsUpEnabled(true);
 		}
-
+		
 		obj = getIntent().getParcelableExtra("userAccount");
 		inputName = obj.getName();
 		emailInput = obj.getEmail();
-
+		
 		//setting the title texts
 		emailText = (TextView)findViewById(R.id.textView3);
 		emailText.setText(emailInput);
 		nameText = (TextView)findViewById(R.id.textView1);
 		nameText.setText(inputName);
+		
+		//from BookInfoPage
+		if (getIntent().getStringExtra("flag").equals("bookInfoPage")){		
+			ArrayList<BookBunch> bookSaved = getIntent().getParcelableArrayListExtra("bookBunch");
+			//do not query database
+			for(final BookBunch point: bookSaved){
+				BookList.add(point.getBookBunch());
 
-		try {
-			queryBooks();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (ExecutionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			}
+
+		}
+		//from Main Search Page
+		else{
+			//query the database
+			try {
+				queryBooks();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (ExecutionException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 
 		BookListAdapter bookAdapter = new BookListAdapter();
@@ -74,11 +89,15 @@ public class AccountPage extends Activity implements OnItemClickListener{
 		public void onItemClick(AdapterView<?> parent, View view, int position,
 				long id) {
 			Book clickedBook = BookList.get(position);
+			for(Book point: BookList){
+				passedBack.add(new BookBunch(point));
+			}
 			Intent j = new Intent(
 					AccountPage.this,
 					BookInfoPage.class);
 			j.putExtra("newBook", clickedBook);
 			j.putExtra("userAccount", obj);
+			j.putExtra("bookBunch", passedBack);
 			startActivity(j);
 
 

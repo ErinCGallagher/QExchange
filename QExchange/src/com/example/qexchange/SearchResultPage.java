@@ -53,7 +53,6 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 
 		}
 		else{
-			System.out.println("from search page");
 			useraccount = getIntent().getParcelableExtra("userAccount");
 			searchInput = getIntent().getStringExtra("search");
 
@@ -84,18 +83,14 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 			long id) {
 		Book currentBook = searchedBooks.get(position);
 		for(Book point: searchedBooks){
-			System.out.println(point.getName());
 			passedBack.add(new BookBunch(point));
-			System.out.println("passedBack"+ passedBack);
 		}
 		Intent m = new Intent(
 				SearchResultPage.this,
 				BookInfoMainPage.class);
 		m.putExtra("newBook", currentBook);
 		m.putExtra("userAccount", useraccount);
-		m.putExtra("search",searchInput);
 		m.putExtra("bookBunch", passedBack);
-		System.out.println("HERE");
 		startActivity(m);
 		finish();
 

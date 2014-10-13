@@ -37,9 +37,6 @@ public class BookInfoMainPage extends Activity {
 		comment = obj.getComment();
 		course = obj.getTag();
 		email = obj.getEmail();
-		System.out.println("emailll: " +email);
-		
-		search = getIntent().getStringExtra("search");
 		
 		TextView emailText = (TextView)findViewById(R.id.emailText);
 		emailText.setText(email);
@@ -79,7 +76,6 @@ public class BookInfoMainPage extends Activity {
 				SearchResultPage.class);
 		j.putExtra("flag","bookInfoMain");
 		j.putExtra("userAccount", account);
-		j.putExtra("search",  search);
 		j.putExtra("bookBunch", bookSaved);
 		startActivity(j);
 		finish();
