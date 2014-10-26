@@ -1,6 +1,7 @@
 package com.example.qexchange;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
 import android.app.Activity;
@@ -16,6 +17,10 @@ public class AddBookPage extends Activity {
 	private Connect database = new Connect();
 	private String emailInput, inputName;
 	private Account obj;
+	private ArrayList<BookBunch> bookSaved;
+	private ArrayList<Book> searchedBook = new ArrayList<Book>();
+	private ArrayList<BookBunch> bookSavedUpdated = new ArrayList<BookBunch>();
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState){
@@ -26,6 +31,12 @@ public class AddBookPage extends Activity {
 		}
 		obj = getIntent().getParcelableExtra("userAccount");
 		emailInput = obj.getEmail();
+		
+		bookSaved = getIntent().getParcelableArrayListExtra("bookBunch");
+		for(BookBunch point: bookSaved){
+			searchedBook.add(point.getBookBunch());
+		}	
+
 	}
 
 	public void submitBook (View v){
@@ -87,7 +98,10 @@ public class AddBookPage extends Activity {
 		if (!title.equals("retry") && !author.equals("retry")  && edition!=0 && !courseCode.equals("retry") && price != 0 && !comment.equals("retry")){
 			Book b1 = new Book(title, author,edition, price, comment, courseCode, emailInput);
 			addToDatabase(title, author, courseCode, comment, edition, price);
+			searchedBook.add(b1);
 		}
+
+		
 	}
 	private void addToDatabase(String title, String author, String courseCode, String comment, int edition, double price){
 		
@@ -101,11 +115,18 @@ public class AddBookPage extends Activity {
 		} catch (ExecutionException e) {
 			e.printStackTrace();
 		}
+		//update list of Books
+		for(Book point: searchedBook){
+			bookSavedUpdated.add(new BookBunch(point));
+			System.out.println("name: "+point.getName());
+		}
 
 		Intent j = new Intent(
 				AddBookPage.this,
 				AccountPage.class);
+		j.putExtra("flag","bookInfoPage");
 		j.putExtra("userAccount", obj);
+		j.putExtra("bookBunch", bookSavedUpdated);
 		startActivity(j);
 		startActivity(j);
 	}
@@ -169,7 +190,9 @@ public boolean onOptionsItemSelected(MenuItem item) {
 	Intent j = new Intent(
 			AddBookPage.this,
 			AccountPage.class);
+	j.putExtra("flag","bookInfoPage");
 	j.putExtra("userAccount", obj);
+	j.putExtra("bookBunch", bookSaved);
 	startActivity(j);
 	finish();
 	return true;

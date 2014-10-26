@@ -70,7 +70,6 @@ public class BookInfoPage extends Activity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-
 		Intent j = new Intent(
 				BookInfoPage.this,
 				AccountPage.class);

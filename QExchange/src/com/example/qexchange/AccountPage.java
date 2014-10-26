@@ -152,12 +152,15 @@ public class AccountPage extends Activity implements OnItemClickListener{
 			return true;
 		}
 
-		public void launchAddBookPage(View view){
-			//startActivity(new Intent(AccountPage.this, AddBookPage.class));
+		public void launchAddBookPage(View view){		
+			for(Book point: BookList){
+				passedBack.add(new BookBunch(point));
+			}
 			Intent j = new Intent(
 					AccountPage.this,
 					AddBookPage.class);
 			j.putExtra("userAccount", obj);
+			j.putExtra("bookBunch", passedBack);
 			startActivity(j);
 		}
 
