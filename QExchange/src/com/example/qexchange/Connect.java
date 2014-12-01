@@ -8,6 +8,7 @@ import java.util.Properties;
 
 import android.database.SQLException;
 import android.os.AsyncTask;
+import com.microsoft.windowsazure.mobileservices.*;
 
 
 public class Connect  extends AsyncTask<String, Void, ResultSet>{
@@ -17,6 +18,7 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 	String serverName = "sql3.freesqldatabase.com";
 	int portNumber = 3306;
 	Connection conn;
+	MobileServiceClient mClient;
 
 	@Override
 	protected ResultSet doInBackground(String... arg0) throws SQLException {
@@ -50,7 +52,7 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 		}
 		return results;	
 	}
-
+	/*
 	//create connection
 	public Connection getConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException, java.sql.SQLException {
 
@@ -72,6 +74,15 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 		}
 
 		return conn;
+	}
+	*/
+	
+	//create connection
+	public Connection getConnection() throws SQLException, InstantiationException, IllegalAccessException, ClassNotFoundException, java.sql.SQLException {
+		mClient = new MobileServiceClient(
+			      "https://erinsql.azure-mobile.net/",
+			      "mqLhUXeYXXBUaZSAjvajwsuhSLzXgH86", this
+			);
 	}
 
 	public void sqlInsertExecution(String arg0){
