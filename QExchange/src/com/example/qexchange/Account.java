@@ -3,6 +3,7 @@ package com.example.qexchange;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+//defines the attributes of an account
 public class Account implements Parcelable{
 
 	private String email;
