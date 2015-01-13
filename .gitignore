@@ -1,4 +1,10 @@
 QExchange/bin/
+QExchange/gen/
+QExchange/build/
+QExchange/.settings/
+.metadata
+appcompat_v7
+
 
 # OSX files
 .DS_Store
