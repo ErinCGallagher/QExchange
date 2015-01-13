@@ -10,9 +10,9 @@ import android.database.SQLException;
 import android.os.AsyncTask;
 
 
-public class Connect  extends AsyncTask<String, Void, ResultSet>{
-	String email = "sql353460";
-	String password = "lQ5%bI4%";
+public class Connect extends AsyncTask<String, Void, ResultSet>{
+	String email = "sql363998";
+	String password = "vM9!cK1*";
 	String dbms = "mysql";
 	String serverName = "sql3.freesqldatabase.com";
 	int portNumber = 3306;
@@ -66,7 +66,7 @@ public class Connect  extends AsyncTask<String, Void, ResultSet>{
 			Class.forName("com.mysql.jdbc.Driver").newInstance();
 
 			conn = DriverManager.getConnection(
-					"jdbc:mysql://sql3.freesqldatabase.com:3306/sql353460",
+					"jdbc:mysql://sql3.freesqldatabase.com:3306/sql363998",
 					connectionProps);
 			System.out.println("added to database");
 		}
