@@ -56,11 +56,13 @@ public class CreateAccountPage extends Activity {
 		passwordField = (EditText)findViewById(R.id.newPassField);
 		passwordInput = isTextValid(passwordField);
 		confirmField = (EditText)findViewById(R.id.confirmPassField);
+		confirmPass = isTextValid(confirmField);
 		
 		//password needs to be greater or = to 5
 		if (passwordInput.length() < 5 || passwordInput.length() > 20){
 			passwordField.setError("Passwords must be at least 5 characters but less than 20 characters");
 		}
+		
 		correctPass = doPasswordsMatch(passwordInput, confirmPass);
 
 		emailField = (EditText)findViewById(R.id.emailField);
@@ -116,6 +118,7 @@ public class CreateAccountPage extends Activity {
 	}
 
 	private Boolean doPasswordsMatch(String one, String two){
+
 		if (one.equals(two)){
 			return true;
 		}
