@@ -62,12 +62,12 @@ public class LoginPage extends Activity {
 
 			try {
 				//finished query
-				ResultSet results = Query.query("SELECT", query);
+				ResultSet result = Query.query("SELECT", query);
 				
 				//found account with username password validation
-				if (results.next()) {
+				if (result.next()) {
 
-					String userName = results.getString("name");
+					String userName = result.getString("name");
 					userAccount = new Account(emailInput, userName);
 
 					Intent j = new Intent(
@@ -92,6 +92,9 @@ public class LoginPage extends Activity {
 		                }
 		            });
 				}
+			
+			//close resultSet
+			Query.closeResult(result);
 				
 			} catch (SQLException e) {
 				e.printStackTrace();

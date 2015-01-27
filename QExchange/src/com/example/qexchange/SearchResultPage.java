@@ -124,6 +124,9 @@ public class SearchResultPage extends ListActivity implements OnItemClickListene
 			searchedBooks.add(new Book(title1,author1,edition1,price1,comment1,course1, email1));
 
 		}
+		
+		//close resultSet
+		Query.closeResult(result);
 	}
 
 	@Override

@@ -22,6 +22,8 @@ public class Connect extends AsyncTask<String, Void, ResultSet>{
 	protected ResultSet doInBackground(String... arg0) throws SQLException {
 		ResultSet results = null;
 		Connection response = null;
+		PreparedStatement stmt = null;
+		
 		try {
 			response = getConnection();
 		} catch (SQLException e) {
@@ -36,17 +38,41 @@ public class Connect extends AsyncTask<String, Void, ResultSet>{
 			e.printStackTrace();
 		}	
 		this.conn = response;
+		
 		if (arg0[0].equals("INSERT")){
-			sqlInsertExecution(arg0[1]);
+			sqlInsertExecution(arg0[1],stmt);
 		}
 		else{
 			results = sqlSelectionExecution(arg0[1]);
 		}
-		try {
-			conn.close();
-		} catch (java.sql.SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		
+		//close connections
+		/**
+		//cannot close this before 
+		if (results !=null){
+			try {
+				results.close();
+			} catch (java.sql.SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		**/
+		if (stmt !=null){
+			try {
+				stmt.close();
+			} catch (java.sql.SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		if (conn !=null){
+			try {
+				conn.close();
+			} catch (java.sql.SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		return results;	
 	}
@@ -74,8 +100,7 @@ public class Connect extends AsyncTask<String, Void, ResultSet>{
 		return conn;
 	}
 
-	public void sqlInsertExecution(String arg0){
-		PreparedStatement stmt;
+	public void sqlInsertExecution(String arg0, PreparedStatement stmt){
 		try {
 			stmt = conn.prepareStatement(arg0);
 			stmt.executeUpdate();

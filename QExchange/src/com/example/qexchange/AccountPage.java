@@ -133,6 +133,8 @@ public class AccountPage extends Activity implements OnItemClickListener{
 				BookList.add(new Book(title1,author1,edition1,price1,comment1,course1, email1));
 
 			}
+			//close resultSet
+			Query.closeResult(result);
 		}
 
 		@Override

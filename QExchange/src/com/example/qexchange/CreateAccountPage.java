@@ -1,5 +1,6 @@
 package com.example.qexchange;
 
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.concurrent.ExecutionException;
 
@@ -88,7 +89,7 @@ public class CreateAccountPage extends Activity {
 					emailField.setError("Email in Use");
 				} else {
 					String query = "INSERT INTO Accounts (email, password, name) VALUES ('"+e1.getEmail()+"','"+passwordInput+"','"+e1.getName()+"')";
-					Query.query("INSERT", query);
+					ResultSet result = Query.query("INSERT", query);
 					
 					//go to Main Page
 					Intent j = new Intent(
@@ -96,6 +97,9 @@ public class CreateAccountPage extends Activity {
 							MainPage.class);
 					j.putExtra("userAccount", userAccount);
 					startActivity(j);
+					
+					//close resultSet
+					Query.closeResult(result);
 				}
 			} catch (SQLException e) {
 				e.printStackTrace();

@@ -17,6 +17,18 @@ public class Query {
 		return result;
 	}
 	
+	public static void closeResult(ResultSet result){
+		
+		if (result !=null){
+			try {
+				result.close();
+			} catch (java.sql.SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	public static boolean CheckEmailExists(String inputEmail) throws SQLException, InterruptedException, ExecutionException {
 		Connect database = new Connect();
 		ResultSet result =null;

@@ -176,6 +176,8 @@ public void query() throws SQLException, InterruptedException, ExecutionExceptio
 		System.out.println("getName"+inputName);
 
 	}
+	//close resultSet
+	Query.closeResult(result);
 }
 
 @Override
