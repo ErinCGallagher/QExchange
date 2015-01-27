@@ -4,6 +4,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
 
+import com.mysql.jdbc.ResultSet;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Build;
@@ -104,10 +106,10 @@ public class AddBookPage extends Activity {
 		
 	}
 	private void addToDatabase(String title, String author, String courseCode, String comment, int edition, double price){
-		
+		java.sql.ResultSet result =null;
 		String query = "INSERT INTO Books (title, author, edition, course, price, userEmail, comment) VALUES ('"+title+"','"+author+"','"+edition+"','"+courseCode+"','"+price+"','"+emailInput+"','"+comment+"')";
 		try {
-			Query.query("INSERT", query);
+			result = Query.query("INSERT", query);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {
@@ -129,6 +131,9 @@ public class AddBookPage extends Activity {
 		j.putExtra("bookBunch", bookSavedUpdated);
 		startActivity(j);
 		startActivity(j);
+		
+		//close resultSet
+		Query.closeResult(result);
 	}
 
 
