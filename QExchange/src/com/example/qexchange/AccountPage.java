@@ -57,6 +57,7 @@ public class AccountPage extends Activity implements OnItemClickListener{
 			//do not query database
 			for(final BookBunch point: bookSaved){
 				BookList.add(point.getBookBunch());
+				System.out.println(point.getBookBunch());
 
 			}
 
